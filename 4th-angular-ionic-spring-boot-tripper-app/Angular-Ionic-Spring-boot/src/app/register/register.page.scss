@@ -1,0 +1,67 @@
+ion-content {
+  --background: url("../login.jpg") no-repeat 80% 50%;
+  --overflow: hidden;
+}
+
+.title {
+  height: 30%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 250%;
+  padding-bottom: 10%;
+  color: green;
+}
+
+.form-label {
+  margin-left: 10%;
+  font-size: 0.9rem;
+}
+
+.form-input {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: solid 1px green;
+  border-radius: 0.5rem;
+  margin: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  max-height: 3rem;
+  max-width: 80%;
+  font-size: 0.8rem;
+}
+
+.input-icon {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  color: green;
+}
+
+ion-label {
+  color: green;
+}
+
+ion-button.eye {
+  color: green;
+}
+
+.register-btn {
+  width: 70%;
+  margin: auto;
+  background-color: gray;
+  color: darkred;
+  border-radius: 0.8rem;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: green;
+}
+
+.login-part {
+  display: flex;
+  justify-content: center;
+}

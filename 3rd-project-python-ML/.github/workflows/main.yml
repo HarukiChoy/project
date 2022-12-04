@@ -1,0 +1,23 @@
+name: clearerpics
+on:
+  push:
+    branches:
+      - "*"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ssh to pull latest version
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd tecky_project3/
+            git pull
+            npm install
+            npx knex migrate:latest
+            forever restart index.js
+          host: clearerpics.live
+          user: ubuntu
+          key: ${{secrets.SSH_PRIVATE_KEY}}

@@ -1,0 +1,38 @@
+<ion-content>
+  <div class="header">
+    <ion-title> Trip Schedule </ion-title>
+    <div class="addBtn">
+      <ion-buttons slot="end">
+        <ion-button (click)="addTrip()">
+          <ion-icon name="add-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </div>
+  <div class="line"></div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="title-1">Trip</th>
+        <th class="title-2">Departure Airport</th>
+        <th class="title-3">Arrival Airport</th>
+        <th class="title-profile"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-data" *ngFor="let trip of trips">
+        <td>{{ trip.id }}</td>
+        <td>{{ trip.departureIATA }}</td>
+        <td>{{ trip.arrivalIATA }}</td>
+        <td>
+          <ion-buttons (click)="getTripProfile(trip.id)">
+            <ion-button>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>

@@ -1,0 +1,77 @@
+ion-content {
+  --background: url("../login.jpg") no-repeat 20% 55%;
+  --overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+ion-back-button {
+  margin-top: 1%;
+}
+
+.title {
+  height: 20%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 250%;
+  padding-bottom: 10%;
+  color: green;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-box {
+  width: 40%;
+  margin-left: 5%;
+}
+
+.right-box {
+  width: 40%;
+  margin-right: 5%;
+}
+
+.subtitle {
+  display: block;
+}
+
+.form-input {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: solid 1px green;
+  border-radius: 0.5rem;
+  margin: 0.5rem 0% 0.5rem 0%;
+  height: 2.5rem;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+.ticket-part {
+  margin-left: 5%;
+  max-width: 90%;
+}
+
+.input-icon {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  color: green;
+}
+
+ion-label {
+  color: green;
+}
+
+.submit-btn {
+  width: 90%;
+  margin: auto;
+  background-color: gray;
+  color: darkred;
+  border-radius: 0.8rem;
+}

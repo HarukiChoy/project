@@ -1,0 +1,45 @@
+ion-content {
+  --background: url("../login.jpg") no-repeat 40% 60%;
+  --overflow: hidden;
+}
+
+.header {
+  display: flex;
+  height: 6%;
+  position: sticky;
+}
+
+.refreshBtn {
+  margin: auto;
+}
+
+.line {
+  border: solid 0.05rem red;
+  background-color: red;
+}
+
+table {
+  width: 100%;
+}
+
+th.title {
+  border-bottom: solid 1px red;
+  color: blue;
+  font-size: large;
+  width: 22%;
+  height: 4rem;
+}
+
+th.chart {
+  border-bottom: solid 1px red;
+  color: blue;
+  font-size: large;
+  width: 12%;
+  height: 4rem;
+}
+
+td {
+  padding: 1%;
+  text-align: center;
+  border-bottom: solid 1px red;
+}

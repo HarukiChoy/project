@@ -1,0 +1,73 @@
+body {
+  font-family: fantasy;
+  background-color: skyblue;
+}
+
+/* audio {
+  display: none;
+} */
+
+h1 {
+  color: purple;
+  display: flex;
+  justify-content: center;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.canvas-box {
+  box-sizing: border-box;
+  background-color: skyblue;
+}
+
+.row.functioning-btn {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.row.functioning-btn > button {
+  width: 10rem;
+  border-radius: 0.3rem;
+  background-color: transparent;
+  border-color: red;
+  border-width: 0.2rem;
+  text-transform: uppercase;
+  margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+}
+
+.row.functioning-btn > button:hover {
+  background-color: yellow;
+}
+
+.box {
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+#fps {
+  font-size: 1.5rem;
+}
+
+#lonely {
+  font-size: 1.5rem;
+}
+
+#lonelyNum {
+  font-size: 1.3rem;
+  font-style: italic;
+}
+
+#over-population {
+  font-size: 1.5rem;
+}
+#overPop {
+  font-size: 1.3rem;
+  font-style: italic;
+}

@@ -1,0 +1,39 @@
+<ion-content>
+  <div class="header">
+    <ion-title> Exchange Rate </ion-title>
+    <div class="refreshBtn">
+      <ion-buttons slot="end">
+        <ion-button (click)="ngOnInit()">
+          <ion-icon name="refresh-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </div>
+  <div class="line"></div>
+  <table>
+    <thead>
+      <tr>
+        <th class="title">貨幣</th>
+        <th class="title">代號</th>
+        <th class="title">買入</th>
+        <th class="title">賣出</th>
+        <th class="chart">圖表</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-data" *ngFor="let record of result">
+        <td>{{ record.chi }}</td>
+        <td>{{ record.eng }}</td>
+        <td>{{ record.buy }}</td>
+        <td>{{ record.sell }}</td>
+        <td>
+          <ion-buttons>
+            <ion-button>
+              <ion-icon name="eye-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>

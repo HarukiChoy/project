@@ -1,0 +1,7 @@
+{
+  "name": "FRD-project-ionic-angular",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

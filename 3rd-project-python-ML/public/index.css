@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Aboreto&family=DynaPuff&family=Silkscreen&display=swap");
+
+body {
+  margin: auto;
+  font-family: "Aboreto", cursive;
+  /* font-family: "DynaPuff", cursive;
+  font-family: "Silkscreen", cursive; */
+}
+
+#login-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 440px;
+  margin: auto;
+}
+
+#login-header {
+  text-align: center;
+}
+
+.user-form {
+  border: 1px solid black;
+  width: 60vw;
+}
+
+.user-buttons {
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: center;
+}
+
+.user-buttons > button {
+  margin: 0 0.5rem;
+  border: none;
+  background-color: transparent;
+  color: blue;
+  cursor: pointer;
+}
+
+form > input[type="submit"] {
+  margin: 0.25rem 0;
+}
+
+form#register {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0;
+  width: 350px;
+  margin: auto;
+}
+
+form > div.form-row {
+  display: flex;
+  width: 100%;
+  margin: 0.2rem 0;
+}
+
+div.label {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+div.input {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 0 0 0.5rem;
+}
+
+div > input:focus::placeholder {
+  color: transparent;
+}
+
+form#login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0;
+  width: 350px;
+  margin: auto;
+}
+
+.signinCheckbox {
+  display: flex;
+  margin: 0.25rem;
+}
+
+dialog {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+}
+
+dialog > div {
+  margin: 0.25rem 0;
+}
+
+dialog > button {
+  margin-top: 1rem;
+}

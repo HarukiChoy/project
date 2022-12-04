@@ -1,0 +1,16 @@
+user
+----
+id serial primary key
+username varchar(60) unique
+password char(60) 
+registered_at timestamp default
+upload_pic_id integer fk pic.id
+
+pic
+----
+id serial pk
+low_resolution varchar(60)
+uploaded_at timestamp default
+high_resolution varchar(60)
+upscaled_at timestamp default
+                            (potential) recognized_words text

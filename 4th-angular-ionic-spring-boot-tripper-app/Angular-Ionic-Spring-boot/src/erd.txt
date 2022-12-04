@@ -1,0 +1,89 @@
+# Visualize on https://erd.surge.sh
+# or https://quick-erd.surge.sh
+#
+# Relationship Types
+#  -    - one to one
+#  -<   - one to many
+#  >-   - many to one
+#  >-<  - many to many
+#  -0   - one to zero or one
+#  0-   - zero or one to one
+#  0-0  - zero or one to zero or one
+#  -0<  - one to zero or many
+#  >0-  - zero or many to one
+#
+////////////////////////////////////
+
+
+users
+-----
+id serial PK
+email varchar(50)unique
+username varchar(50)
+password char(60)
+mobile varchar(50)
+created_at timestamp
+
+
+trip
+----
+id serial PK
+user_id integer FK >- users.id
+date_from Date
+departure_airport integer FK -< airport.id
+date_until Date
+arrival_airport integer FK -< airport.id
+ticket_from varchar(10)
+departure_time_from timestamp
+arrival_time_from timestamp
+ticket_until varchar(10)
+departure_time_until timestamp
+arrival_time_until timestamp
+
+
+airport
+-------
+id serial PK
+country varchar(20)
+name varchar(20)
+IATA_code char(3)
+
+
+to_prepare_list
+---------------
+id serial PK
+trip_id integer FK >- trip.id
+content varchar(255)
+is_done boolean
+
+
+schedule
+--------
+id serial PK
+trip_id integer FK >- trip.id
+schedule_date Date
+schedule_starting_time timestamp
+schedule_location varchar(255)
+
+
+post
+----
+id serial PK
+user_id integer FK >- users.id
+trip_id integer FK >- trip.id
+public_date Date
+public_time timestamp
+public_location varchar(255)
+content text
+photo varvhar(255)
+created_at timestamp
+
+
+rate
+----
+id serial PK
+chi varchar(10)
+eng varchar(5)
+buy varchar(10)
+sell varchar(10)
+scrapped_at timestamp

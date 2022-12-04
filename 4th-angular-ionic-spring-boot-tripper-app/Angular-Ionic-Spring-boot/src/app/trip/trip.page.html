@@ -1,0 +1,219 @@
+<ion-content>
+  <ion-buttons>
+    <ion-back-button defaultHref="/"> </ion-back-button>
+  </ion-buttons>
+  <div class="title">New Trip</div>
+
+  <form class="trip-form" (ngSubmit)="addTrip()">
+    <!-- Travel from -->
+    <div class="row">
+      <!-- label -->
+      <div class="left-box">
+        <div class="subtitle">
+          <ion-label for="from-date">From</ion-label>
+        </div>
+
+        <!-- period -->
+        <div class="period-part">
+          <div class="form-input">
+            <div class="input-icon">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+            <ion-input
+              name="from-date"
+              type="date"
+              [(ngModel)]="fromDate"
+            ></ion-input>
+          </div>
+        </div>
+      </div>
+      <!-- airport -->
+      <div class="right-box">
+        <div class="subtitle">
+          <ion-label for="from-airport">Airport</ion-label>
+        </div>
+        <div class="airport-part">
+          <div class="form-input">
+            <div class="input-icon">
+              <ion-icon name="airplane-outline"></ion-icon>
+            </div>
+            <ion-input
+              name="from-airport"
+              type="text"
+              [(ngModel)]="departureIATA"
+            ></ion-input>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Travel to -->
+    <div class="row">
+      <!-- label -->
+      <div class="left-box">
+        <div class="subtitle">
+          <ion-label for="to-date">To</ion-label>
+        </div>
+
+        <!-- period -->
+        <div class="period-part">
+          <div class="form-input">
+            <div class="input-icon">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+            <ion-input
+              name="to-date"
+              type="date"
+              [(ngModel)]="toDate"
+            ></ion-input>
+          </div>
+        </div>
+      </div>
+      <!-- airport -->
+      <div class="right-box">
+        <div class="subtitle">
+          <ion-label for="to-airport">Airport</ion-label>
+        </div>
+        <div class="airport-part">
+          <div class="form-input">
+            <div class="input-icon">
+              <ion-icon name="airplane-outline"></ion-icon>
+            </div>
+            <ion-input
+              name="to-airport"
+              type="text"
+              [(ngModel)]="arrivalIATA"
+            ></ion-input>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Departure Info -->
+    <div class="ticket-part">
+      <div class="subtitle">
+        <ion-label for="departure-ticket">Departure Air Flight Name</ion-label>
+      </div>
+      <div class="form-input">
+        <div class="input-icon">
+          <ion-icon name="paper-plane-outline"></ion-icon>
+        </div>
+        <ion-input
+          name="departure-ticket"
+          type="text"
+          [(ngModel)]="departureFlight"
+          placeholder="Enter your departure air flight ticket"
+        ></ion-input>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- label -->
+      <div class="left-box">
+        <div class="subtitle">
+          <ion-label for="from-departure-time">Departure Time</ion-label>
+        </div>
+
+        <!-- period -->
+        <div class="time-part">
+          <div class="form-input">
+            <div class="input-icon">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+            <ion-input
+              name="from-departure-time"
+              type="time"
+              [(ngModel)]="fromDepartureTime"
+            ></ion-input>
+          </div>
+        </div>
+      </div>
+      <!-- airport -->
+      <div class="right-box">
+        <div class="subtitle">
+          <ion-label for="from-arrival-time">Arrival Time</ion-label>
+        </div>
+        <div class="airport-part">
+          <div class="form-input">
+            <div class="input-icon">
+              <ion-icon name="airplane-outline"></ion-icon>
+            </div>
+            <ion-input
+              name="from-arrival-time"
+              type="time"
+              [(ngModel)]="fromArrivalTime"
+            ></ion-input>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrival Info -->
+    <div class="ticket-part">
+      <div class="subtitle">
+        <ion-label for="arrival-ticket">Arrival Air Flight Name</ion-label>
+      </div>
+      <div class="form-input">
+        <div class="input-icon">
+          <ion-icon name="paper-plane-outline"></ion-icon>
+        </div>
+        <ion-input
+          name="arrival-ticket"
+          type="text"
+          [(ngModel)]="arrivalFlight"
+          placeholder="Enter your arrival air flight ticket"
+        ></ion-input>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- label -->
+      <div class="left-box">
+        <div class="subtitle">
+          <ion-label for="to-departure-time">Departure Time</ion-label>
+        </div>
+
+        <!-- period -->
+        <div class="time-part">
+          <div class="form-input">
+            <div class="input-icon">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+            <ion-input
+              name="to-departure-time"
+              type="time"
+              [(ngModel)]="toDepartureTime"
+            ></ion-input>
+          </div>
+        </div>
+      </div>
+      <!-- airport -->
+      <div class="right-box">
+        <div class="subtitle">
+          <ion-label for="to-arrival-time">Arrival Time</ion-label>
+        </div>
+        <div class="airport-part">
+          <div class="form-input">
+            <div class="input-icon">
+              <ion-icon name="airplane-outline"></ion-icon>
+            </div>
+            <ion-input
+              name="to-arrival-time"
+              type="time"
+              [(ngModel)]="toArrivalTime"
+            ></ion-input>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br />
+    <div>
+      <ion-buttons>
+        <ion-button class="submit-btn" type="submit" expand="block">
+          Add a new trip
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </form>
+</ion-content>

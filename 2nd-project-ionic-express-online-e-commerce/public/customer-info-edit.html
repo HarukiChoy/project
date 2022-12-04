@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"
+    />
+    <title>更新會員資料</title>
+  </head>
+  <body>
+    <ion-app>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>更新會員資料</ion-title>
+          <ion-buttons slot="start">
+            <ion-back-button
+              default-href="#"
+              onclick="location.href='/customer-info.html'"
+            ></ion-back-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <form onsubmit="event.preventDefault(); updateInfo(event.target)">
+          <ion-item>
+            <ion-label position="fixed">會員名稱：</ion-label>
+            <ion-label id="show_username" class="info">{username}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label position="fixed">電郵：</ion-label>
+            <ion-label id="show_email" class="info">{email}</ion-label>
+            <!-- <ion-input type="string" name="name"></ion-input> -->
+          </ion-item>
+          <ion-item>
+            <ion-label position="fixed">電話號碼：</ion-label>
+            <ion-input
+              type="string"
+              class="info"
+              name="show_phone_number"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="fixed">出生月份：</ion-label>
+            <ion-select
+              placeholder="請選擇月份"
+              name="show_birth_month"
+              id="show_birth_month"
+              class="info"
+            >
+              <ion-select-option class="month">1</ion-select-option>
+              <ion-select-option class="month">2</ion-select-option>
+              <ion-select-option class="month">3</ion-select-option>
+              <ion-select-option class="month">4</ion-select-option>
+              <ion-select-option class="month">5</ion-select-option>
+              <ion-select-option class="month">6</ion-select-option>
+              <ion-select-option class="month">7</ion-select-option>
+              <ion-select-option class="month">8</ion-select-option>
+              <ion-select-option class="month">9</ion-select-option>
+              <ion-select-option class="month">10</ion-select-option>
+              <ion-select-option class="month">11</ion-select-option>
+              <ion-select-option class="month">12</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="fixed">會員等級：</ion-label>
+            <ion-label id="show_is_vip" class="info">{is_vip}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label position="fixed">會員優惠：</ion-label>
+            <ion-label id="show_discount" class="info">{discount}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label position="fixed">累積消費：</ion-label>
+            <ion-label id="show_consumption" class="info"
+              >{consumption}</ion-label
+            >
+          </ion-item>
+          <br />
+          <div id="updateBtn" class="ion-text-center">
+            <ion-button type="submit">完成更新</ion-button>
+          </div>
+        </form>
+      </ion-content>
+
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button href="./index.html">
+          <ion-label>首頁</ion-label>
+          <ion-icon name="home"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button href="./category.html">
+          <ion-label>分類</ion-label>
+          <ion-icon name="list"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button href="/profile">
+          <ion-label>會員</ion-label>
+          <ion-icon name="person"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button href="./toCart.html">
+          <ion-label>購物車</ion-label>
+          <ion-icon name="cart"></ion-icon>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-app>
+    <script type="module">
+      import { toastController } from "https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js";
+      window.toastController = toastController;
+    </script>
+    <script>
+      let formTemplate = document.querySelector("form");
+
+      async function loadInfo() {
+        let res = await fetch("/customer/info");
+        let json = await res.json();
+        formTemplate.querySelector("[id=show_username]").textContent =
+          json.username;
+        formTemplate.querySelector("[id=show_email]").textContent = json.email;
+        formTemplate.querySelector("[name=show_phone_number]").value =
+          json.phone_number || "";
+        formTemplate.querySelector("[id=show_birth_month]").value =
+          String(json.birth_month) || "";
+
+        if (json.is_vip == false) {
+          is_vip = "基本會員";
+        } else {
+          is_vip = "VIP會員";
+        }
+        formTemplate.querySelector("[id=show_is_vip]").textContent = is_vip;
+        if (json.discount == 0) {
+          discount = "請升級成為VIP以享受購物優惠";
+          formTemplate.querySelector(
+            "[id=show_discount]"
+          ).textContent = `${discount}`;
+        } else {
+          discount = json.discount;
+          formTemplate.querySelector(
+            "[id=show_discount]"
+          ).textContent = `${discount}% OFF`;
+        }
+
+        formTemplate.querySelector(
+          "[id=show_consumption]"
+        ).textContent = `HKD$ ${json.consumption}`;
+      }
+      loadInfo();
+
+      async function updateInfo(form) {
+        console.log("hi");
+        console.log(form.show_phone_number.value);
+        console.log(form.show_birth_month.value);
+        let res = await fetch("/customer/info", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            phone_number: form.show_phone_number.value,
+            birth_month: form.show_birth_month.value,
+          }),
+        });
+        let json = await res.json();
+        if (json.error) {
+          let toast = await toastController.create({
+            message: json.error,
+            color: "danger",
+            duration: 4000,
+          });
+          toast.present();
+          return;
+        }
+        let toast = await toastController.create({
+          message: "Successfully update your info",
+          duration: 3000,
+        });
+        toast.present();
+        form.reset();
+        setTimeout(() => {
+          location.href = "/customer.html";
+        }, 2000);
+        return;
+      }
+    </script>
+  </body>
+</html>

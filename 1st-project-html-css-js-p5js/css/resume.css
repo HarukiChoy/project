@@ -1,0 +1,119 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgba(255, 255, 0, 0.1);
+}
+
+@media print {
+  body {
+    background-color: white;
+  }
+  .content-box .col {
+    width: 100%;
+  }
+}
+
+.heading {
+  color: red;
+  height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.space {
+  width: 100%;
+  height: 0.3rem;
+  background-color: lightblue;
+}
+
+.content-box {
+  display: flex;
+}
+
+.row-subtitle {
+  color: purple;
+  background-color: orange;
+  padding-left: 0.5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+}
+
+.row-content {
+  margin: 1rem;
+}
+
+.job-title {
+  color: green;
+  font-size: 1.2rem;
+}
+
+.job-duration {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.info-content {
+  margin: 1rem;
+  min-height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.address-subtitle {
+  color: green;
+  font-size: 1.2rem;
+}
+.phone-subtitle {
+  color: green;
+  font-size: 1.2rem;
+}
+.email-subtitle {
+  color: green;
+  font-size: 1.2rem;
+}
+
+li {
+  margin: 0.5rem;
+}
+
+.others {
+  margin: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.2rem;
+}
+
+.textAreaBox {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#textArea {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: lightgreen;
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button > button {
+  width: 11rem;
+  font-size: 1.3rem;
+  border-color: red;
+  border-width: 0.2rem;
+  border-radius: 0.3rem;
+  background-color: transparent;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-family: fantasy;
+}
+
+.button > button:hover {
+  background-color: yellow;
+}

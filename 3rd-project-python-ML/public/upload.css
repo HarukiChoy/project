@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  height: 1vh;
+  display: flex;
+  align-items: center;
+}
+
+h3 {
+  margin: 0.5rem;
+}
+
+#main {
+  width: 90vw;
+  flex-grow: 1;
+  background-color: lightblue;
+  /* max-height: 92vh; */
+}
+
+#preview-window {
+  box-sizing: border-box;
+  width: 100%;
+  height: 70vh;
+  border: 3px solid black;
+  margin-bottom: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* #preview-window > iframe.hidden {
+  display: none;
+} */
+
+#preview-window > embed.hidden {
+  display: none;
+}
+
+#radio-button-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 1vh;
+}
+
+.radio-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1.3rem;
+  width: 33vw;
+  height: 2vh;
+  border-radius: 1rem;
+  background-color: beige;
+}
+
+input[type="radio"] {
+  margin-right: 1rem;
+}
+
+form {
+  text-align: center;
+  height: 10vh;
+}
+
+form.hidden {
+  display: none;
+}
+
+dialog#result {
+  display: block;
+  position: absolute;
+  top: 20vh;
+  height: 50vh;
+  width: 80vw;
+  white-space: pre;
+  overflow: scroll;
+}
+
+dialog#result.hidden {
+  display: none;
+}

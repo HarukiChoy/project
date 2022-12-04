@@ -1,0 +1,6 @@
+train: ../dataset/text/images/train
+val: ../dataset/text/images/validation
+test: ../dataset/text/images/test
+
+nc: 1
+names: ['Text']

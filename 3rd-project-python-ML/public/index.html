@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login/ Register page</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div id="login-page">
+      <div id="login-header">
+        <h1>ClearerPics.LIVE</h1>
+      </div>
+      <div class="user-form">
+        <!-- choose register or login form -->
+        <div class="user-buttons">
+          <button class="register">Register</button>
+          |
+          <button class="login">Login</button>
+        </div>
+
+        <!-- register form -->
+        <form id="register" action="/register" method="post">
+          <div class="form-row">
+            <div class="label">
+              <label for="register_username"
+                ><i class="fa-solid fa-user"></i> Username:</label
+              >
+            </div>
+            <div class="input">
+              <input
+                type="text"
+                name="username"
+                id="register_username"
+                placeholder="example@email.com"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="label">
+              <label for="password_1"
+                ><i class="fa-solid fa-key"></i> Password:</label
+              >
+            </div>
+            <div class="input">
+              <input
+                type="password"
+                name="password_1"
+                id="password_1"
+                placeholder="********"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="label">
+              <label for="password_2"
+                ><i class="fa-solid fa-key"></i> Confirmation:</label
+              >
+            </div>
+            <div class="input">
+              <input
+                type="password"
+                name="password_2"
+                id="password_2"
+                placeholder="********"
+              />
+            </div>
+          </div>
+          <input type="submit" value="Register" />
+        </form>
+
+        <!-- login form -->
+        <form id="login" action="/login" method="post">
+          <div class="form-row">
+            <div class="label">
+              <label for="username"
+                ><i class="fa-solid fa-user"></i> Username:</label
+              >
+            </div>
+            <div class="input">
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="example@email.com"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="label">
+              <label for="password"
+                ><i class="fa-solid fa-key"></i> Password:</label
+              >
+            </div>
+            <div class="input">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="********"
+              />
+            </div>
+          </div>
+          <div class="signinCheckbox">
+            <input
+              type="checkbox"
+              name="keepSignin"
+              id="keepSignin"
+              checked="checked"
+            /><label for="keepSignin">Keep me Signed in</label>
+          </div>
+          <input type="submit" value="Login" />
+        </form>
+      </div>
+
+      <!-- pop up dialog after login in and redirect to correct page -->
+      <dialog></dialog>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

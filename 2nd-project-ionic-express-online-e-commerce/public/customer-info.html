@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"
+    />
+    <title>會員資料</title>
+  </head>
+  <body>
+    <ion-app>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>會員資料</ion-title>
+          <ion-buttons slot="start">
+            <ion-back-button
+              default-href="#"
+              onclick="location.href='/customer.html'"
+            ></ion-back-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <form>
+          <ion-item>
+            <ion-label position="fixed">會員名稱：</ion-label>
+            <ion-label id="show_username" class="info">{username}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label position="fixed">電郵：</ion-label>
+            <ion-label id="show_email" class="info">{email}</ion-label>
+            <!-- <ion-input type="string" name="name"></ion-input> -->
+          </ion-item>
+          <ion-item>
+            <ion-label position="fixed">電話號碼：</ion-label>
+            <ion-label id="show_phone_number" class="info"
+              >{phone_number}</ion-label
+            >
+            <!-- <ion-input type="number" step="0.01" name="price"></ion-input> -->
+          </ion-item>
+          <ion-item>
+            <ion-label position="fixed">出生月份：</ion-label>
+            <ion-label id="show_birth_month" class="info"
+              >{birth_month}</ion-label
+            >
+            <!-- <ion-input type="string" name="spec"></ion-input> -->
+          </ion-item>
+          <ion-item>
+            <ion-label position="fixed">會員等級：</ion-label>
+            <ion-label id="show_is_vip" class="info">{is_vip}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label position="fixed">會員優惠：</ion-label>
+            <ion-label id="show_discount" class="info">{discount}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label position="fixed">累積消費：</ion-label>
+            <ion-label id="show_consumption" class="info"
+              >{consumption}</ion-label
+            >
+          </ion-item>
+          <br />
+          <div id="updateBtn" class="ion-text-center">
+            <ion-button href="/customer-info-edit.html"
+              >更新個人資料</ion-button
+            >
+          </div>
+        </form>
+      </ion-content>
+
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button href="./index.html">
+          <ion-label>首頁</ion-label>
+          <ion-icon name="home"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button href="./category.html">
+          <ion-label>分類</ion-label>
+          <ion-icon name="list"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button href="/profile">
+          <ion-label>會員</ion-label>
+          <ion-icon name="person"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button href="./toCart.html">
+          <ion-label>購物車</ion-label>
+          <ion-icon name="cart"></ion-icon>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-app>
+    <script>
+      let formTemplate = document.querySelector("form");
+
+      async function loadInfo() {
+        let res = await fetch("/customer/info");
+        let json = await res.json();
+        formTemplate.querySelector("[id=show_username]").textContent =
+          json.username;
+        formTemplate.querySelector("[id=show_email]").textContent = json.email;
+        formTemplate.querySelector("[id=show_phone_number]").textContent =
+          json.phone_number || "none";
+        formTemplate.querySelector("[id=show_birth_month]").textContent =
+          json.birth_month || "none";
+
+        if (json.is_vip == false) {
+          is_vip = "基本會員";
+        } else {
+          is_vip = "VIP會員";
+        }
+        formTemplate.querySelector("[id=show_is_vip]").textContent = is_vip;
+        if (json.discount == 0) {
+          discount = "請升級成為VIP以享受購物優惠";
+          formTemplate.querySelector(
+            "[id=show_discount]"
+          ).textContent = `${discount}`;
+        } else {
+          discount = json.discount;
+          formTemplate.querySelector(
+            "[id=show_discount]"
+          ).textContent = `${discount}% OFF`;
+        }
+
+        formTemplate.querySelector(
+          "[id=show_consumption]"
+        ).textContent = `HKD$ ${json.consumption}`;
+      }
+      loadInfo();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Haruki Choy</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: rgb(230, 223, 218);
+      }
+
+      .heading {
+        margin: 3rem;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .nav-link {
+        border-radius: 1rem;
+        margin: 0.5rem;
+      }
+
+      .nav-link:hover {
+        background-color: skyblue;
+        transition: 0.3s;
+        border-radius: 1rem;
+      }
+
+      .social {
+        width: 10rem;
+        display: flex;
+        align-items: center;
+      }
+      .icon {
+        font-size: 1.5rem;
+        margin: 0.5rem;
+      }
+
+      .icon > button {
+        background-color: transparent;
+        border: none;
+        color: rgb(49, 108, 244);
+      }
+
+      .content {
+        width: 100%;
+        height: 70vh;
+        border-radius: 1rem;
+        border: solid 2px black;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+      }
+
+      .left {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .name {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: darkblue;
+        margin-bottom: 1rem;
+      }
+      .intro {
+        width: 100%;
+        height: 40vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        color: darkblue;
+      }
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+
+  <body>
+    <audio autoplay loop>
+      <source src="../music/canon.mp3" type="audio/mp3" />
+    </audio>
+    <div
+      data-aos="zoom-in"
+      data-aos-easing="ease-out-cubic"
+      data-aos-duration="1000"
+      class="container"
+    >
+      <div class="heading">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-link" aria-current="page" href="home.html"
+                  >Home</a
+                >
+                <a class="nav-link" href="resume.html" target="_blank"
+                  >My Resume</a
+                >
+                <a class="nav-link" href="index.html" target="_blank"
+                  >Game of Life</a
+                >
+                <a class="nav-link disabled">I</a>
+                <a class="nav-link disabled">am</a>
+                <a class="nav-link disabled">still</a>
+                <a class="nav-link disabled">working</a>
+                <a class="nav-link disabled">on</a>
+                <a class="nav-link disabled">it.</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <button>mute/play music</button>
+        <div class="social">
+          <div class="fb icon">
+            <a href="https://www.facebook.com/haruki.choy" target="_blank"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+          </div>
+          <div class="instagram icon">
+            <a href="https://www.instagram.com/harukichoy0511/" target="_blank"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+          </div>
+          <div class="whatsapp icon">
+            <a
+              href=`https://wa.me/85291866115/?text=Hi`
+              target="_blank"
+              ><i class="fa-brands fa-whatsapp"></i
+            ></a>
+          </div>
+          <div class="twitter icon">
+            <button onclick="alert('I have no twitter account')">
+              <i class="fa-brands fa-twitter"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="left" col-sm-2>
+          <div class="name">
+            <h1><b>HARUKI CHOY</b></h1>
+          </div>
+          <div class="intro">
+            <h4>
+              <p>Name: Haruki Choy</p>
+              <p>Age: Secret</p>
+              <p>Favorite Animal: Cat</p>
+              <p>Hobby: Hiking, swimming and reading books</p>
+            </h4>
+          </div>
+        </div>
+        <div class="right" col-sm-2>
+          <img src="../photos/IMG_2383.jpg" alt="The source is not correct" />
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
