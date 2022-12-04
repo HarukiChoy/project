@@ -19,6 +19,7 @@ export class ApiService {
       if (json.jwtToken) {
         localStorage.setItem('jwtToken', json.jwtToken);
         this.token = json.jwtToken;
+        console.log(this.token);
       }
       return json;
     } catch (error) {

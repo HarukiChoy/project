@@ -26,10 +26,10 @@ public class UserService {
     this.userRepository = userRepository;
     this.jwtService = jwtService;
   }
-  public Long addUser(RegisterDTO user) {
+  public Long addUser(RegisterDTO user) throws Exception {
     Optional<UserDAO> findUserByEmail = userRepository.findByEmail(user.email);
     if (findUserByEmail.isPresent()) {
-      throw new IllegalStateException("This email has already been used. Please try again.");
+      throw new Exception("This email has already been used. Please try again.");
     }
 
     String hashPassword = BCrypt.hashpw(user.password, BCrypt.gensalt(12));
@@ -44,20 +44,19 @@ public class UserService {
     return userRepository.save(newUser).getId();
   }
 
-  public HashMap<String, String> login(LoginDTO user) {
+  public HashMap<String, String> login(LoginDTO user) throws Exception {
     Optional<UserDAO> findUserByEmail = userRepository.findByEmail(user.email);
     if (!findUserByEmail.isPresent()) {
-      throw new IllegalStateException("User not found.");
+      throw new Exception("User not found.");
     }
     List<UserDAO> userFound = userRepository.findUserDAOByEmail(user.email);
     String hashedPassword = userFound.get(0).getPassword();
     Long userId = userFound.get(0).getId();
     Boolean checkPassword = BCrypt.checkpw(user.password, hashedPassword);
     if (!checkPassword) {
-      throw new IllegalStateException("Wrong Password.");
+      throw new Exception("Wrong Password.");
     }
     HashMap<String, String> result = jwtService.createJwt(user, userId);
-    System.out.println(result);
     return result;
   }
 }

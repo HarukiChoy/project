@@ -22,16 +22,12 @@ public class AuthorizationCheckFilter extends OncePerRequestFilter {
   protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws ServletException, IOException {
 //    res.setHeader("Access-Control-Allow-Origin", "*");
 //    res.setHeader("Access-Control-Allow-Methods", "*");
-//    res.setHeader("Access-Control-Allow-Headers", "Origin, Content-Type, X-Auth-Token");
-//    res.setHeader("Access-Control-Allow-Credentials", "true");
     if (req.getServletPath().equals("/users/login") || req.getServletPath().equals("/users/register")) {
       chain.doFilter(req, res);
       return;
     }
     String authorHeader = req.getHeader("Authorization");
     System.out.println("authorHeader: " + authorHeader);
-    String author = req.getHeader(AUTHORIZATION);
-    System.out.println("author: " + author);
     String bearer ="Bearer ";
 
     if (authorHeader == null || !authorHeader.startsWith(bearer)){
@@ -40,11 +36,8 @@ public class AuthorizationCheckFilter extends OncePerRequestFilter {
     }
 
     try {
-      System.out.println("hi1");
       String token = authorHeader.substring(bearer.length());
-      System.out.println("hi2");
       Claims claims = JwtService.parseJWT(token);
-      System.out.println("hi3");
       System.out.println("JWT payload:"+claims.toString());
       chain.doFilter(req, res);
     } catch(Exception e){

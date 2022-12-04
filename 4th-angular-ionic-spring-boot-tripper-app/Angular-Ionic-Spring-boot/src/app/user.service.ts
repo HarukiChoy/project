@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class UserService {
-  token: string;
   constructor(public api: ApiService, private router: Router) {}
 
   navigatePageTo(navLink: string) {
