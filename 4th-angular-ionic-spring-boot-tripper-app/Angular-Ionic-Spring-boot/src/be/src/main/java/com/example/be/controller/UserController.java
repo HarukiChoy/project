@@ -22,9 +22,8 @@ public class UserController {
   // Register POST api
   @CrossOrigin(origins = "*")
   @PostMapping("/register")
-  public Long addUser(@RequestBody RegisterDTO user) throws Exception {
-    Long userId = userService.addUser(user);
-    return userId;
+  public HashMap<String, String> addUser(@RequestBody RegisterDTO user) throws Exception {
+    return userService.addUser(user);
   }
 
   @CrossOrigin(origins = "*")

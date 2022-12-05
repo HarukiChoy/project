@@ -24,7 +24,6 @@ public class SpringSecurityConfiguration {
       .addFilterAfter(new AuthorizationCheckFilter(), BasicAuthenticationFilter.class)
       .httpBasic().disable()
 //      .anyRequest().authenticated()
-//      .antMatchers("/**").permitAll()
     ;
 
     return http.build();

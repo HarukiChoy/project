@@ -1,6 +1,7 @@
 package com.example.be.security;
 
 import com.example.be.dto.LoginDTO;
+import com.example.be.dto.RegisterDTO;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -22,7 +23,7 @@ public class JwtService {
     return key;
   }
   public static SecretKey secret = generateKey();
-  public static HashMap<String, String> createJwt(LoginDTO user, Long userId) {
+  public static HashMap<String, String> createJwt(LoginDTO user , Long userId) {
     // jwt issued at now
     Date now = new Date();
     // jwt expired after 30 minutes

@@ -12,14 +12,12 @@ export class ApiService {
 
   async fetch(url: string, init?: RequestInit) {
     try {
-      console.log('token: ', this.token);
       let res = await fetch(this.origin + url, init);
       let json = await res.json();
 
       if (json.jwtToken) {
         localStorage.setItem('jwtToken', json.jwtToken);
         this.token = json.jwtToken;
-        console.log(this.token);
       }
       return json;
     } catch (error) {

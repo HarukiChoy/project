@@ -35,7 +35,6 @@ export class RegisterPage {
 
   // invoked by clicking the register button in register page
   async register() {
-    console.log('register function in the controller is working properly.');
     let res = await this.userService.register(
       this.username,
       this.password,

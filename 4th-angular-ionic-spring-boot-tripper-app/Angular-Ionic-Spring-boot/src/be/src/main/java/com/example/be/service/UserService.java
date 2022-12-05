@@ -26,7 +26,7 @@ public class UserService {
     this.userRepository = userRepository;
     this.jwtService = jwtService;
   }
-  public Long addUser(RegisterDTO user) throws Exception {
+  public HashMap<String, String> addUser(RegisterDTO user) throws Exception {
     Optional<UserDAO> findUserByEmail = userRepository.findByEmail(user.email);
     if (findUserByEmail.isPresent()) {
       throw new Exception("This email has already been used. Please try again.");
@@ -41,7 +41,10 @@ public class UserService {
 
     Date createTimestamp = new Date();
     newUser.setCreateTimestamp(createTimestamp);
-    return userRepository.save(newUser).getId();
+    Long userId = userRepository.save(newUser).getId();
+    LoginDTO loginUser = new LoginDTO(user.email, hashPassword);
+    HashMap<String, String> result = JwtService.createJwt(loginUser, userId);
+    return result;
   }
 
   public HashMap<String, String> login(LoginDTO user) throws Exception {
@@ -56,7 +59,7 @@ public class UserService {
     if (!checkPassword) {
       throw new Exception("Wrong Password.");
     }
-    HashMap<String, String> result = jwtService.createJwt(user, userId);
+    HashMap<String, String> result = JwtService.createJwt(user, userId);
     return result;
   }
 }
