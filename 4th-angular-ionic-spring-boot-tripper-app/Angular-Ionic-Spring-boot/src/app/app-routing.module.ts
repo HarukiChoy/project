@@ -24,6 +24,16 @@ const routes: Routes = [
         (m) => m.TripProfilePageModule
       ),
   },
+  {
+    path: 'prepare/:id',
+    loadChildren: () =>
+      import('./prepare/prepare.module').then((m) => m.PreparePageModule),
+  },
+  {
+    path: 'schedule/:id',
+    loadChildren: () =>
+      import('./schedule/schedule.module').then((m) => m.SchedulePageModule),
+  },
   // {
   //   path: 'login',
   //   loadChildren: () =>

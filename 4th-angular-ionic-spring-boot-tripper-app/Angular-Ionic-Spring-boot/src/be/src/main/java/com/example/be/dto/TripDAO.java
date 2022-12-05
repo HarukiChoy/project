@@ -1,5 +1,4 @@
 package com.example.be.dto;
-
 import javax.persistence.*;
 
 @Entity(name = "TripDAO")
@@ -17,6 +16,9 @@ public class TripDAO {
     generator = "trip_seq"
   )
   private Long id;
+
+  @Column(name = "user_id")
+  private Integer userId;
   private String fromDate;
   private String departureIATA;
   private String toDate;
@@ -36,6 +38,14 @@ public class TripDAO {
 
   public void setId(Long id) {
     this.id = id;
+  }
+
+  public Integer getUserId() {
+    return userId;
+  }
+
+  public void setUserId(Integer userId) {
+    this.userId = userId;
   }
 
   public String getFromDate() {

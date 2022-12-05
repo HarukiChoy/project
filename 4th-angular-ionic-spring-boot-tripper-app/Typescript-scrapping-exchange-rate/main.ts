@@ -41,7 +41,7 @@ export class Scrapper {
 
   jobSchedule() {
     let rule = new schedule.RecurrenceRule();
-    rule.minute = [0, 15, 30, 45];
+    // rule.minute = [0, 15, 30, 45];
     rule.second = 0;
     schedule.scheduleJob(rule, () => this.main());
   }

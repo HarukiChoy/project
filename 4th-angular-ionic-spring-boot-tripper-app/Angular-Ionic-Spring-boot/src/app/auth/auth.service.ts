@@ -16,7 +16,7 @@ export class AuthService {
     }
 
     let result = await this.apiService.get('/auth/check');
-    if (!result.progress) {
+    if (!result.userId) {
       return this.isLoggedIn;
     }
     this.isLoggedIn = true;

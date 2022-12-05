@@ -238,4 +238,21 @@
       </ion-buttons>
     </div>
   </form>
+  <br />
+
+  <div>
+    <ion-buttons *ngIf="!isDisabled">
+      <ion-button class="prepare-btn" expand="block" (click)="prepare()">
+        Prepare List
+      </ion-button>
+    </ion-buttons>
+  </div>
+  <br />
+  <div>
+    <ion-buttons *ngIf="!isDisabled">
+      <ion-button class="schedule-btn" expand="block" (click)="schedule()">
+        Schedule
+      </ion-button>
+    </ion-buttons>
+  </div>
 </ion-content>

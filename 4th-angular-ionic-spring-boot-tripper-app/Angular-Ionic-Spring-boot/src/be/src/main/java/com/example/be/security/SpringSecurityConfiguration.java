@@ -21,7 +21,7 @@ public class SpringSecurityConfiguration {
       .antMatchers("/users/login").permitAll()
       .antMatchers("/users/register").permitAll()
       .and()
-      .addFilterAfter(new AuthorizationCheckFilter(), BasicAuthenticationFilter.class)
+      .addFilterBefore(new AuthorizationCheckFilter(), BasicAuthenticationFilter.class)
       .httpBasic().disable()
 //      .anyRequest().authenticated()
     ;

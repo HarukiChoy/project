@@ -12,7 +12,6 @@ import javax.transaction.Transactional;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TripService {
@@ -25,7 +24,7 @@ public class TripService {
     this.airportRepository = airportRepository;
   }
 
-  public HashMap<String, Long> addTrip(AddNewTripDTO trip) throws Exception {
+  public HashMap<String, Long> addTrip(AddNewTripDTO trip, Integer userId) throws Exception {
     if (trip.fromDate == null) {
       throw new Exception("Missing going to date.");
     }
@@ -57,6 +56,7 @@ public class TripService {
       throw new Exception("Missing coming back arrival time.");
     }
     TripDAO newTrip = new TripDAO();
+    newTrip.setUserId(userId);
     newTrip.setFromDate(trip.fromDate);
     newTrip.setDepartureIATA(trip.departureIATA);
     newTrip.setToDate(trip.toDate);
@@ -80,17 +80,13 @@ public class TripService {
     return result;
   }
 
-  public List<TripDAO> getTripList() {
-    return tripRepository.findAll();
+  public List<TripDAO> getTripList(Integer userId) {
+    return tripRepository.findByUserId(userId);
   }
 
-  public TripDAO getTripProfileById(String id) throws Exception {
+  public TripDAO getTripProfileById(String id, Integer userId) {
     Long tripId = Long.valueOf(id);
-    Optional<TripDAO> findTripById = tripRepository.findById(tripId);
-    if (!findTripById.isPresent()) {
-      throw new Exception("Trip not found.");
-    }
-    return tripRepository.findTripDAOSById(tripId);
+    return tripRepository.findTripDAOSByIdAndUserId(tripId, userId);
   }
 
   public List<AirportDAO> getAirportList() {
@@ -98,9 +94,9 @@ public class TripService {
   }
 
   @Transactional
-  public TripDAO updateTripProfile(TripDAO nTrip) {
+  public TripDAO updateTripProfile(TripDAO nTrip, Integer userId) {
     Long id = Long.valueOf(nTrip.getId());
-    TripDAO trip = tripRepository.findTripDAOSById(id);
+    TripDAO trip = tripRepository.findTripDAOSByIdAndUserId(id, userId);
     if (nTrip.getFromDate() != null && nTrip.getFromDate().length() > 0) {
       trip.setFromDate(nTrip.getFromDate());
     }

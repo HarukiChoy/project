@@ -1,5 +1,3 @@
-import { TripWithId } from './../model/interface';
-// import { DEV_MODE } from './../api.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -89,5 +87,13 @@ export class TripProfilePage implements OnInit, OnDestroy {
     }
     await this.tripService.getTripList();
     this.router.navigate(['/tabs/trip']);
+  }
+
+  prepare() {
+    this.router.navigate(['/prepare', this.id]);
+  }
+
+  schedule() {
+    this.router.navigate(['/schedule', this.id]);
   }
 }

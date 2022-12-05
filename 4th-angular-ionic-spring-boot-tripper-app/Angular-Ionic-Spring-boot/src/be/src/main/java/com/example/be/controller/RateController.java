@@ -26,6 +26,7 @@ public class RateController {
   @CrossOrigin(origins = "*")
   @GetMapping("/list")
   public Page<RateDAO> getRateList() {
+    System.out.println("HI");
     return rateService.getRateList();
   }
 }

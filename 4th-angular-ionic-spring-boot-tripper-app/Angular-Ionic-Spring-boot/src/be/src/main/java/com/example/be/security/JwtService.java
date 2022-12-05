@@ -27,7 +27,7 @@ public class JwtService {
     // jwt issued at now
     Date now = new Date();
     // jwt expired after 30 minutes
-    Date expireDate = new Date(System.currentTimeMillis() + 3 * 60 * 1000);
+    Date expireDate = new Date(System.currentTimeMillis() + 30 * 60 * 1000);
     // generate the token
     JwtBuilder builder = Jwts.builder()
       // set the header in jwt
@@ -53,15 +53,16 @@ public class JwtService {
     return map;
   }
 
-  public static Claims parseJWT(String jwtToken) throws Exception {
+  public static String parseJWT(String jwtToken) throws Exception {
     try{
       return Jwts.parser()
         .setSigningKey(secret)
         .parseClaimsJws(jwtToken)
-        .getBody();
+        .getBody().getId();
     }catch(Exception e){
       throw new Exception(e.getMessage());
     }
 
   }
+
 }

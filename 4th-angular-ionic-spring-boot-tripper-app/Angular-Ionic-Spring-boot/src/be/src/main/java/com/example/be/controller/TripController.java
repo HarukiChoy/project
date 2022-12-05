@@ -7,6 +7,7 @@ import com.example.be.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,14 +23,18 @@ public class TripController {
 
   @CrossOrigin(origins = "*")
   @PostMapping("/new")
-  public HashMap<String, Long> addTrip(@RequestBody AddNewTripDTO trip) throws Exception {
-    return tripService.addTrip(trip);
+  public HashMap<String, Long> addTrip(@RequestBody AddNewTripDTO trip, HttpServletRequest req) throws Exception {
+    HashMap<String, Integer> map = Auth.checkJwtValid(req);
+    Integer userId = map.get("userId");
+    return tripService.addTrip(trip, userId);
   }
 
   @CrossOrigin(origins = "*")
   @GetMapping("/list")
-  public List<TripDAO> getTripList () {
-    return tripService.getTripList();
+  public List<TripDAO> getTripList (HttpServletRequest req) throws Exception {
+    HashMap<String, Integer> map = Auth.checkJwtValid(req);
+    Integer userId = map.get("userId");
+    return tripService.getTripList(userId);
   }
 
   @CrossOrigin(origins = "*")
@@ -41,14 +46,19 @@ public class TripController {
   @CrossOrigin(origins = "*")
   @GetMapping("/profile/{id}")
   public TripDAO getTripProfileById(
-    @PathVariable(name="id") String id
+    @PathVariable(name="id") String id,
+    HttpServletRequest req
   ) throws Exception {
-    return tripService.getTripProfileById(id);
+    HashMap<String, Integer> map = Auth.checkJwtValid(req);
+    Integer userId = map.get("userId");
+    return tripService.getTripProfileById(id, userId);
   }
 
   @CrossOrigin(origins = "*")
   @PutMapping("/update")
-  public TripDAO updateTripProfile(@RequestBody TripDAO nTrip) {
-    return tripService.updateTripProfile(nTrip);
+  public TripDAO updateTripProfile(@RequestBody TripDAO nTrip, HttpServletRequest req) throws Exception {
+    HashMap<String, Integer> map = Auth.checkJwtValid(req);
+    Integer userId = map.get("userId");
+    return tripService.updateTripProfile(nTrip, userId);
   }
 }
