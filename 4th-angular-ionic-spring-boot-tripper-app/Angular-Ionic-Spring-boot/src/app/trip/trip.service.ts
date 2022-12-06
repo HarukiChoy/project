@@ -121,8 +121,16 @@ export class TripService {
     return result;
   }
 
-  async addToPrepareList(content: string) {
-    return await this.api.post('/prepare/item', { content });
+  async addToPrepareList({ id, content }) {
+    let result = await this.api.post('/prepare/item', {
+      id: id,
+      content: content,
+    });
+    if (result.error) {
+      alert('Failed to add a new item.');
+      return;
+    }
+    console.log('new item: ', result);
   }
 
   async updatePrepareList() {}

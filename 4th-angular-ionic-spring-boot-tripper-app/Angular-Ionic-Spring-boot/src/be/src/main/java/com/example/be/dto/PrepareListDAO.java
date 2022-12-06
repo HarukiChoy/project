@@ -20,6 +20,9 @@ public class PrepareListDAO {
   @Column(name = "trip_id", nullable = false)
   private Integer tripId;
 
+  @Column(name="user_id", nullable = false)
+  private Integer userId;
+
   @Column(name = "content", nullable = false, columnDefinition = "text")
   private String content;
 
@@ -28,19 +31,6 @@ public class PrepareListDAO {
 
 
   public PrepareListDAO() {}
-
-  public PrepareListDAO(Integer tripId, String content, Boolean isDone) {
-    this.tripId = tripId;
-    this.content = content;
-    this.isDone = isDone;
-  }
-
-  public PrepareListDAO(Long id, Integer tripId, String content, Boolean isDone) {
-    this.id = id;
-    this.tripId = tripId;
-    this.content = content;
-    this.isDone = isDone;
-  }
 
   public Long getId() {
     return id;
@@ -56,6 +46,14 @@ public class PrepareListDAO {
 
   public void setTripId(Integer tripId) {
     this.tripId = tripId;
+  }
+
+  public Integer getUserId() {
+    return userId;
+  }
+
+  public void setUserId(Integer userId) {
+    this.userId = userId;
   }
 
   public String getContent() {

@@ -1,6 +1,8 @@
 import { TripService } from './../trip/trip.service';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IonModal } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-prepare',
@@ -11,9 +13,25 @@ export class PreparePage implements OnInit {
   isDisabled = true;
   content: string;
 
-  constructor(private tripService: TripService) {}
+  constructor(
+    private tripService: TripService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
-  ngOnInit() {}
+  sub?: Subscription;
+  id: number;
+
+  async ngOnInit() {
+    this.sub = this.activatedRoute.params.subscribe((params) => {
+      this.id = +params['id'];
+    });
+
+    let result = await this.tripService.getTripProfile(this.id);
+  }
+
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
+  }
 
   @ViewChild(IonModal) modal: IonModal;
   cancel() {
@@ -22,8 +40,12 @@ export class PreparePage implements OnInit {
   }
   async confirm() {
     this.modal.dismiss(this.content, 'confirm');
-    return await this.tripService.addToPrepareList(this.content);
+    await this.tripService.addToPrepareList({
+      id: this.id,
+      content: this.content,
+    });
     this.content = '';
+    return;
   }
 
   editPrepareList() {
