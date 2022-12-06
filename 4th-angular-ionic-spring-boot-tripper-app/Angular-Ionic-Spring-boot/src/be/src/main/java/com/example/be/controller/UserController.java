@@ -2,10 +2,12 @@ package com.example.be.controller;
 
 import com.example.be.dto.LoginDTO;
 import com.example.be.dto.RegisterDTO;
+import com.example.be.dto.UserDAO;
 import com.example.be.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 @RestController
@@ -32,15 +34,15 @@ public class UserController {
     return userService.login(user);
   }
 
-
-//  @CrossOrigin(origins = "*")
-//  @GetMapping("/profile")
-//  public String getProfileByUserId(
-//    @RequestParam("email") String id,
-//    @RequestParam("password") String type
-//  ) {
-//    return "{id:" + id + ",type:" + type + "}";
-//  }
+  @CrossOrigin(origins = "*")
+  @GetMapping("/profile")
+  public UserDAO profile(HttpServletRequest req) throws Exception {
+    HashMap<String, Integer> map = Auth.checkJwtValid(req);
+    Integer userId = map.get("userId");
+    UserDAO user =  userService.getProfile(userId);
+    System.out.println("user profile: " + user);
+    return user;
+  }
 
 
 }

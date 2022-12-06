@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class RateService {
@@ -38,8 +39,13 @@ public class RateService {
       PageRequest.of(0, 13, Sort.by(Sort.Direction.DESC, "id"))
     );
     return page;
-
   }
 
 
+    public List<RateDAO> getRateData(String eng) {
+      System.out.println(eng);
+      List<RateDAO> getData = rateRepository.findAllByEng(eng);
+      System.out.println(getData);
+      return getData;
+    }
 }

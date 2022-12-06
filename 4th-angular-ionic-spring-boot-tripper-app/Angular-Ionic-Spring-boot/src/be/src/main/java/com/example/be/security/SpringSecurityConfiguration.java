@@ -23,7 +23,6 @@ public class SpringSecurityConfiguration {
       .and()
       .addFilterBefore(new AuthorizationCheckFilter(), BasicAuthenticationFilter.class)
       .httpBasic().disable()
-//      .anyRequest().authenticated()
     ;
 
     return http.build();

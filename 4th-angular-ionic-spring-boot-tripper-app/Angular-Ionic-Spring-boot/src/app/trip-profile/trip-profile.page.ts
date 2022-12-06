@@ -11,7 +11,6 @@ import { TripService } from '../trip/trip.service';
 })
 export class TripProfilePage implements OnInit, OnDestroy {
   isDisabled = true;
-
   // trip$ = this.activatedRoute.params.pipe(
   //   mergeMap((params) => this.tripService.getTripDetail(params.id))
   // );

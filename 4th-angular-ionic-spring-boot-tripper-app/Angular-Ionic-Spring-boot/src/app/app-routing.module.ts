@@ -13,6 +13,11 @@ const routes: Routes = [
       import('./register/register.module').then((m) => m.RegisterPageModule),
   },
   {
+    path: 'login',
+    loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginPageModule),
+  },
+  {
     path: 'new-trip',
     loadChildren: () =>
       import('./trip/trip.module').then((m) => m.TripPageModule),
@@ -34,11 +39,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./schedule/schedule.module').then((m) => m.SchedulePageModule),
   },
-  // {
-  //   path: 'login',
-  //   loadChildren: () =>
-  //     import('./login/login.module').then((m) => m.LoginPageModule),
-  // },
+  {
+    path: 'rate-chart',
+    loadChildren: () => import('./rate-chart/rate-chart.module').then( m => m.RateChartPageModule)
+  },
+
   // {
   //   path: 'tabs/home',
   //   loadChildren: () =>

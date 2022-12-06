@@ -23,9 +23,9 @@ const routes: Routes = [
           import('../tab3/tab3.module').then((m) => m.Tab3PageModule),
       },
       {
-        path: 'login',
+        path: 'profile',
         loadChildren: () =>
-          import('../login/login.module').then((m) => m.LoginPageModule),
+          import('../profile/profile.module').then((m) => m.ProfilePageModule),
       },
       {
         path: '',

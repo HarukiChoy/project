@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "rate")
 public class RateController {
@@ -26,7 +28,14 @@ public class RateController {
   @CrossOrigin(origins = "*")
   @GetMapping("/list")
   public Page<RateDAO> getRateList() {
-    System.out.println("HI");
     return rateService.getRateList();
+  }
+
+  @CrossOrigin(origins = "*")
+  @GetMapping("/data/{eng}")
+  public List<RateDAO> getRateData(
+    @PathVariable(name="eng") String eng
+  ){
+    return rateService.getRateData(eng);
   }
 }

@@ -27,7 +27,7 @@
         <td>{{ record.buy }}</td>
         <td>{{ record.sell }}</td>
         <td>
-          <ion-buttons>
+          <ion-buttons (click)="showChart(record.eng)">
             <ion-button>
               <ion-icon name="eye-outline"></ion-icon>
             </ion-button>

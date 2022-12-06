@@ -1,0 +1,68 @@
+<ion-content>
+  <div class="title">Profile</div>
+
+  <form class="register-form">
+    <!-- email -->
+    <div class="email-part">
+      <div class="form-label">
+        <ion-label for="email">Email</ion-label>
+      </div>
+      <div class="form-input">
+        <div class="input-icon">
+          <ion-icon name="mail-outline"></ion-icon>
+        </div>
+        <ion-input
+          id="email"
+          name="email"
+          type="email"
+          [(ngModel)]="email"
+          disabled="true"
+        ></ion-input>
+      </div>
+    </div>
+    <!-- username -->
+    <div class="username-part">
+      <div class="form-label">
+        <ion-label for="username">Username</ion-label>
+      </div>
+      <div class="form-input">
+        <div class="input-icon">
+          <ion-icon name="id-card-outline"></ion-icon>
+        </div>
+        <ion-input
+          id="username"
+          name="username"
+          type="text"
+          [(ngModel)]="username"
+          disabled="true"
+        ></ion-input>
+        <!-- <div class="eyeBtn">
+          <ion-buttons>
+            <ion-button class="eye" (click)="changePasswordEye()">
+              <ion-icon [name]="eye"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- mobile number -->
+    <div class="mobile-part">
+      <div class="form-label">
+        <ion-label for="mobile">Mobile Number</ion-label>
+      </div>
+      <div class="form-input">
+        <div class="input-icon">
+          <ion-icon name="phone-portrait-outline"></ion-icon>
+        </div>
+        <ion-input
+          id="mobile"
+          name="mobile"
+          type="number"
+          [(ngModel)]="mobile"
+          disabled="true"
+        ></ion-input>
+      </div>
+    </div>
+  </form>
+</ion-content>

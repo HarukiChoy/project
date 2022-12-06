@@ -62,4 +62,9 @@ public class UserService {
     HashMap<String, String> result = JwtService.createJwt(user, userId);
     return result;
   }
+
+  public UserDAO getProfile(Integer userId) {
+    Long id = userId.longValue();
+    return userRepository.findUserDAOById(id);
+  }
 }

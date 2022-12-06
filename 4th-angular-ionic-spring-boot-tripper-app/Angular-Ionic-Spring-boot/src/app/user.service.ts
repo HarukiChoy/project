@@ -12,6 +12,10 @@ export class UserService {
     this.router.navigate([navLink]);
   }
 
+  async getProfile() {
+    return await this.api.get('/users/profile');
+  }
+
   async login({ email, password }) {
     let result = await this.api.post('/users/login', { email, password });
     if (result.error) {

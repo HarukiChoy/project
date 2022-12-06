@@ -1,8 +1,6 @@
 package com.example.be.security;
 
 import com.example.be.dto.LoginDTO;
-import com.example.be.dto.RegisterDTO;
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

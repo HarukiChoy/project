@@ -61,4 +61,6 @@ public class TripController {
     Integer userId = map.get("userId");
     return tripService.updateTripProfile(nTrip, userId);
   }
+
+
 }

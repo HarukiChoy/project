@@ -12,5 +12,6 @@ public interface UserRepository extends JpaRepository<UserDAO, Long> {
 //  @Query(value = "select * from table t where id = $1", nativeQuery = true)
   List<UserDAO> findUserDAOByEmail(String email);
 
+  UserDAO findUserDAOById(Long id);
   Optional<UserDAO> findByEmail(String email);
 }
