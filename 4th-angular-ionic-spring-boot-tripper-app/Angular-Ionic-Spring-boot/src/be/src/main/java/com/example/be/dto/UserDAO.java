@@ -1,7 +1,5 @@
 package com.example.be.dto;
 import javax.persistence.*;
-import java.security.InvalidParameterException;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Entity(name="UserDAO")

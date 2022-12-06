@@ -1,4 +1,4 @@
-import { TripWithId } from './../model/interface';
+import { TripWithId, PrepareList } from './../model/interface';
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Trip } from '../model/interface';
@@ -9,6 +9,13 @@ import { Trip } from '../model/interface';
 export class TripService {
   trips: TripWithId[] = [];
   airports: object[] = [];
+  prepareList: PrepareList[] = [
+    { id: 1, content: 'Buy Umbrella', isDone: false },
+    { id: 2, content: 'Buy SIM card', isDone: false },
+  ];
+  doneList: PrepareList[] = [
+    { id: 3, content: 'Buy air flight ticket', isDone: true },
+  ];
 
   constructor(private api: ApiService) {}
 
@@ -113,4 +120,10 @@ export class TripService {
     let result = await this.api.put(`/trip/update`, trip);
     return result;
   }
+
+  async addToPrepareList(content: string) {
+    return await this.api.post('/prepare/item', { content });
+  }
+
+  async updatePrepareList() {}
 }

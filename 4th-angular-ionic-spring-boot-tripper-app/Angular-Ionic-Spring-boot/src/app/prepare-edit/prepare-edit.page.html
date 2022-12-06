@@ -1,0 +1,37 @@
+<ion-content>
+  <div class="header">
+    <ion-title> Prepare List </ion-title>
+    <div class="addBtn">
+      <ion-buttons slot="end">
+        <ion-button (click)="editList()">
+          <ion-icon name="add-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </div>
+  <div class="line"></div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="title-1">Need to prepare</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-data" *ngFor="let prepare of prepareList">
+        <td>{{ prepare.content }}</td>
+      </tr>
+    </tbody>
+
+    <thead>
+      <tr>
+        <th class="title-1">Done</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-data" *ngFor="let done of doneList">
+        <td>{{ done.content }}</td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>

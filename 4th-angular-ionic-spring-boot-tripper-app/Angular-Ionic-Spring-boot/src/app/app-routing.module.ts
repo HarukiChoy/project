@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'rate-chart',
     loadChildren: () => import('./rate-chart/rate-chart.module').then( m => m.RateChartPageModule)
   },
+  {
+    path: 'prepare-edit',
+    loadChildren: () => import('./prepare-edit/prepare-edit.module').then( m => m.PrepareEditPageModule)
+  },
 
   // {
   //   path: 'tabs/home',

@@ -41,7 +41,6 @@ public class RateService {
     return page;
   }
 
-
     public List<RateDAO> getRateData(String eng) {
       System.out.println(eng);
       List<RateDAO> getData = rateRepository.findAllByEng(eng);

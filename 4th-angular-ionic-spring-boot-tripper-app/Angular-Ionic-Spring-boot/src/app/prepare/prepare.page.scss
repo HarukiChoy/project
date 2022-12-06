@@ -1,6 +1,6 @@
 ion-content {
   --background: url("../login.jpg") no-repeat 25% 55%;
-  --overflow: hidden;
+  // --overflow: hidden;
 }
 
 .header {
@@ -13,6 +13,10 @@ ion-content {
   margin: auto;
 }
 
+.editBtn {
+  margin: auto;
+}
+
 .line {
   border: solid 0.05rem red;
   background-color: red;
@@ -22,38 +26,37 @@ table {
   width: 100%;
 }
 
+// th.title-checkbox {
+//   border-bottom: solid 1px red;
+//   color: blue;
+//   font-size: large;
+//   width: 10%;
+//   height: 4rem;
+// }
+
 th.title-1 {
   border-bottom: solid 1px red;
   color: blue;
   font-size: large;
-  width: 10%;
-  height: 4rem;
-}
-th.title-2 {
-  border-bottom: solid 1px red;
-  color: blue;
-  font-size: large;
-  width: 40%;
-  height: 4rem;
-}
-th.title-3 {
-  border-bottom: solid 1px red;
-  color: blue;
-  font-size: large;
-  width: 40%;
-  height: 4rem;
-}
-th.title-profile {
-  border-bottom: solid 1px red;
-  color: blue;
-  font-size: large;
-  width: 10%;
-  height: 4rem;
+  width: 90%;
+  height: 3.5rem;
 }
 
-td {
-  padding: 1%;
-  text-align: center;
+tr.table-data {
   border-bottom: solid 1px red;
-  height: 3rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+td.checkbox {
+  padding: 2%;
+}
+
+.save-btn {
+  width: 90%;
+  margin: auto;
+  background-color: gray;
+  color: darkred;
+  border-radius: 0.8rem;
 }

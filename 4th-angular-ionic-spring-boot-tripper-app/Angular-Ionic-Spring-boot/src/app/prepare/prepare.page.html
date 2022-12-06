@@ -2,37 +2,113 @@
   <div class="header">
     <ion-title> Prepare List </ion-title>
     <div class="addBtn">
-      <ion-buttons slot="end">
-        <ion-button (click)="addTrip()">
+      <ion-buttons id="add" slot="end">
+        <ion-button>
           <ion-icon name="add-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+    <ion-modal trigger="add">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="cancel()">Cancel</ion-button>
+            </ion-buttons>
+            <ion-title>Add a new item</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="confirm()" [strong]="true"
+                >Confirm</ion-button
+              >
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <ion-item>
+            <ion-label position="stacked">Enter your name</ion-label>
+            <ion-input
+              type="text"
+              placeholder="Content"
+              [(ngModel)]="content"
+            ></ion-input>
+          </ion-item>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+    <div class="editBtn">
+      <ion-buttons slot="end">
+        <ion-button (click)="editPrepareList()">
+          <ion-icon name="create-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
     </div>
   </div>
   <div class="line"></div>
 
-  <table>
-    <thead>
-      <tr>
-        <th class="title-1">Trip</th>
-        <th class="title-2">Departure Airport</th>
-        <th class="title-3">Arrival Airport</th>
-        <th class="title-profile"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table-data" *ngFor="let trip of trips">
-        <td>{{ trip.id }}</td>
-        <td>{{ trip.departureIATA }}</td>
-        <td>{{ trip.arrivalIATA }}</td>
-        <td>
-          <ion-buttons (click)="getTripProfile(trip.id)">
-            <ion-button>
-              <ion-icon name="arrow-forward-outline"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <form class="prepare-list-from" (ngSubmit)="updatePrepareList()">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2" class="title-1">Need to prepare</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-data" *ngFor="let prepare of prepareList">
+          <td class="content-input">
+            <ion-input
+              [disabled]="isDisabled"
+              name="content"
+              type="text"
+              [value]="prepare.content"
+            ></ion-input>
+          </td>
+
+          <td class="checkbox">
+            <ion-checkbox
+              *ngIf="!isDisabled"
+              slot="end"
+              [checked]="prepare.isDone"
+            ></ion-checkbox>
+          </td>
+        </tr>
+      </tbody>
+
+      <br />
+      <div>
+        <ion-buttons *ngIf="!isDisabled">
+          <ion-button class="save-btn" type="submit" expand="block">
+            Save the update
+          </ion-button>
+        </ion-buttons>
+      </div>
+
+      <thead>
+        <tr>
+          <th colspan="2" class="title-1">Done</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-data" *ngFor="let done of doneList">
+          <td class="content-input">
+            <ion-input
+              disabled="true"
+              name="content"
+              type="text"
+              [value]="done.content"
+            ></ion-input>
+          </td>
+
+          <td class="checkbox">
+            <ion-checkbox
+              *ngIf="!isDisabled"
+              disabled="true"
+              slot="end"
+              [checked]="done.isDone"
+            ></ion-checkbox>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
 </ion-content>

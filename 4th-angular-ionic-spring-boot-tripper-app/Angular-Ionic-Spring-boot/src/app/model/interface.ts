@@ -24,3 +24,9 @@ export interface TripWithId {
   toDepartureTime: string;
   toArrivalTime: string;
 }
+
+export interface PrepareList {
+  id: number;
+  content: string;
+  isDone: boolean;
+}
