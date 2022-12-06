@@ -7,15 +7,12 @@ import { Trip } from '../model/interface';
   providedIn: 'root',
 })
 export class TripService {
-  trips: TripWithId[] = [];
+  trips: Array<TripWithId> = [];
   airports: object[] = [];
-  prepareList: PrepareList[] = [
-    { id: 1, content: 'Buy Umbrella', isDone: false },
-    { id: 2, content: 'Buy SIM card', isDone: false },
+  prepareList: Array<PrepareList> = [
+    // { id: 1, content: 'Buy Umbrella', isDone: false },
   ];
-  doneList: PrepareList[] = [
-    { id: 3, content: 'Buy air flight ticket', isDone: true },
-  ];
+  doneList: PrepareList[] = [];
 
   constructor(private api: ApiService) {}
 
@@ -121,17 +118,36 @@ export class TripService {
     return result;
   }
 
-  async addToPrepareList({ id, content }) {
-    let result = await this.api.post('/prepare/item', {
-      id: id,
-      content: content,
-    });
+  async addToPrepareList({ tripId, content }) {
+    let result = await this.api.post('/prepare/item', { tripId, content });
     if (result.error) {
       alert('Failed to add a new item.');
       return;
     }
-    console.log('new item: ', result);
+    this.prepareList = result.filter((record) => record.done == false);
+    this.doneList = result.filter((record) => record.done == true);
+    return;
   }
 
-  async updatePrepareList() {}
+  async getList(tripId: number) {
+    let result = await this.api.get('/prepare/list/' + tripId);
+    this.prepareList = result.filter((record) => record.done == false);
+    this.doneList = result.filter((record) => record.done == true);
+    return;
+  }
+
+  async changeToDone(prepare: PrepareList) {
+    let result = await this.api.put('/prepare/update', prepare);
+    console.log('updated result: ', result);
+  }
+
+  // async updatePrepareList() {
+  //   let temp_array = [];
+  //   for (let record of this.prepareList) {
+  //     if (record.isDone) {
+  //       temp_array.push(record);
+  //     }
+  //   }
+  //   console.log('temp_array: ', temp_array);
+  // }
 }

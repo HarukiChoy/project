@@ -1,3 +1,4 @@
+import { PrepareList } from './../model/interface';
 import { TripService } from './../trip/trip.service';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -25,8 +26,7 @@ export class PreparePage implements OnInit {
     this.sub = this.activatedRoute.params.subscribe((params) => {
       this.id = +params['id'];
     });
-
-    let result = await this.tripService.getTripProfile(this.id);
+    await this.tripService.getList(this.id);
   }
 
   ngOnDestroy(): void {
@@ -41,7 +41,7 @@ export class PreparePage implements OnInit {
   async confirm() {
     this.modal.dismiss(this.content, 'confirm');
     await this.tripService.addToPrepareList({
-      id: this.id,
+      tripId: this.id,
       content: this.content,
     });
     this.content = '';
@@ -56,9 +56,14 @@ export class PreparePage implements OnInit {
     this.isDisabled = false;
   }
 
-  async updatePrepareList() {
-    return;
+  async changeToDone(prepare: PrepareList) {
+    console.log('prepare: ', prepare);
+    await this.tripService.changeToDone(prepare);
   }
+
+  // async updatePrepareList() {
+  //   return await this.tripService.updatePrepareList();
+  // }
 
   get prepareList() {
     return this.tripService.prepareList;

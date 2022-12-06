@@ -6,6 +6,7 @@ import com.example.be.repository.PrepareListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -18,11 +19,11 @@ public class PrepareListService {
     this.prepareListRepository = prepareListRepository;
   }
 
-  public List<PrepareListDAO> getList(Integer userId) {
-    return prepareListRepository.findAllByUserId(userId);
+  public List<PrepareListDAO> getList(Integer userId, Integer tripId) {
+    return prepareListRepository.findAllByUserId(userId, tripId);
   }
 
-  public void addItem(PrepareListDTO newContent, Integer userId) throws Exception {
+  public List<PrepareListDAO> addItem(PrepareListDTO newContent, Integer userId) throws Exception {
     if (newContent.getTripId() == null){
       throw new Exception("Missing Trip Id.");
     }
@@ -30,9 +31,22 @@ public class PrepareListService {
       throw new Exception("Missing Content.");
     }
     PrepareListDAO newItem = new PrepareListDAO();
-    newItem.setTripId(newContent.getTripId());
     newItem.setUserId(userId);
+    newItem.setTripId(newContent.getTripId());
     newItem.setContent(newContent.getContent());
     newItem.setDone(false);
+    prepareListRepository.save(newItem);
+    return prepareListRepository.findAllByUserId(userId, newContent.getTripId());
+  }
+
+  @Transactional
+  public List<PrepareListDAO> updatePrepareProfile(PrepareListDAO prepare) {
+    Long id = Long.valueOf(prepare.getId());
+    PrepareListDAO record = prepareListRepository.findByPrepareId(id);
+    if (prepare.getContent() != null){
+      record.setContent(prepare.getContent());
+    }
+    record.setDone(true);
+    return prepareListRepository.findAllByUserId(prepare.getUserId(), prepare.getTripId());
   }
 }

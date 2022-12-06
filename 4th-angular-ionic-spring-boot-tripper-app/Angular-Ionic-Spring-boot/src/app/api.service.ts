@@ -19,6 +19,7 @@ export class ApiService {
         localStorage.setItem('jwtToken', json.jwtToken);
         this.token = json.jwtToken;
       }
+
       return json;
     } catch (error) {
       return { error: 'Failed to ' + (init?.method || 'fetch') + ' ' + url };

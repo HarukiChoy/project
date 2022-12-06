@@ -22,21 +22,30 @@ public class PrepareListController {
   }
 
   @CrossOrigin(origins = "*")
-  @GetMapping("/list")
-  public List<PrepareListDAO> getList(HttpServletRequest req) throws Exception{
+  @GetMapping("/list/{tripId}")
+  public List<PrepareListDAO> getList(
+    HttpServletRequest req, @PathVariable(name = "tripId") Integer tripId) throws Exception {
     HashMap<String, Integer> map = Auth.checkJwtValid(req);
     Integer userId = map.get("userId");
-    return prepareListService.getList(userId);
+    return prepareListService.getList(userId, tripId);
   }
 
   @CrossOrigin(origins = "*")
   @PostMapping("/item")
-  public void addItem(HttpServletRequest req,
-                      @RequestBody PrepareListDTO newContent
+  public List<PrepareListDAO> addItem(HttpServletRequest req,
+                                      @RequestBody PrepareListDTO newContent
   ) throws Exception {
     HashMap<String, Integer> map = Auth.checkJwtValid(req);
     Integer userId = map.get("userId");
-    prepareListService.addItem(newContent, userId);
+    return prepareListService.addItem(newContent, userId);
   }
 
+  @CrossOrigin(origins = "*")
+  @PutMapping("/update")
+  public List<PrepareListDAO> updatePrepareProfile(HttpServletRequest req,
+                                                   @RequestBody PrepareListDAO prepare
+  ) throws Exception {
+    Auth.checkJwtValid(req);
+    return prepareListService.updatePrepareProfile(prepare);
+  }
 }

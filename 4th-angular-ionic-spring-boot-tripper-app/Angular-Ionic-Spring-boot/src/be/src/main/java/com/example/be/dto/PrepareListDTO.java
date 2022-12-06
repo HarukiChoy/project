@@ -7,10 +7,8 @@ public class PrepareListDTO implements Serializable {
   private Integer tripId;
   private String content;
 
-  public PrepareListDTO() {}
-
-  public PrepareListDTO(Integer userId, String content) {
-    this.tripId = userId;
+  public PrepareListDTO(Integer tripId, String content) {
+    this.tripId = tripId;
     this.content = content;
   }
 

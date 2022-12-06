@@ -1,5 +1,8 @@
 <ion-content>
   <div class="header">
+    <ion-buttons>
+      <ion-back-button defaultHref="/"> </ion-back-button>
+    </ion-buttons>
     <ion-title> Prepare List </ion-title>
     <div class="addBtn">
       <ion-buttons id="add" slot="end">
@@ -47,7 +50,7 @@
   </div>
   <div class="line"></div>
 
-  <form class="prepare-list-from" (ngSubmit)="updatePrepareList()">
+  <form class="prepare-list-from">
     <table>
       <thead>
         <tr>
@@ -65,12 +68,22 @@
             ></ion-input>
           </td>
 
-          <td class="checkbox">
+          <!-- <td class="checkbox">
             <ion-checkbox
               *ngIf="!isDisabled"
               slot="end"
               [checked]="prepare.isDone"
             ></ion-checkbox>
+          </td> -->
+          <td class="checkBtn">
+            <ion-button
+              *ngIf="!isDisabled"
+              slot="end"
+              size="small"
+              (click)="changeToDone(prepare)"
+            >
+              Done
+            </ion-button>
           </td>
         </tr>
       </tbody>
@@ -91,7 +104,7 @@
       </thead>
       <tbody>
         <tr class="table-data" *ngFor="let done of doneList">
-          <td class="content-input">
+          <td colspan="2" class="content-input">
             <ion-input
               disabled="true"
               name="content"
@@ -100,14 +113,14 @@
             ></ion-input>
           </td>
 
-          <td class="checkbox">
+          <!-- <td class="checkbox">
             <ion-checkbox
               *ngIf="!isDisabled"
               disabled="true"
               slot="end"
               [checked]="done.isDone"
             ></ion-checkbox>
-          </td>
+          </td> -->
         </tr>
       </tbody>
     </table>
