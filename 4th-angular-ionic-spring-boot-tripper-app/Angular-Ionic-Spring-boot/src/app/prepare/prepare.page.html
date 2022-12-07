@@ -68,13 +68,6 @@
             ></ion-input>
           </td>
 
-          <!-- <td class="checkbox">
-            <ion-checkbox
-              *ngIf="!isDisabled"
-              slot="end"
-              [checked]="prepare.isDone"
-            ></ion-checkbox>
-          </td> -->
           <td class="checkBtn">
             <ion-button
               *ngIf="!isDisabled"
@@ -87,15 +80,6 @@
           </td>
         </tr>
       </tbody>
-
-      <br />
-      <div>
-        <ion-buttons *ngIf="!isDisabled">
-          <ion-button class="save-btn" type="submit" expand="block">
-            Save the update
-          </ion-button>
-        </ion-buttons>
-      </div>
 
       <thead>
         <tr>
@@ -112,15 +96,6 @@
               [value]="done.content"
             ></ion-input>
           </td>
-
-          <!-- <td class="checkbox">
-            <ion-checkbox
-              *ngIf="!isDisabled"
-              disabled="true"
-              slot="end"
-              [checked]="done.isDone"
-            ></ion-checkbox>
-          </td> -->
         </tr>
       </tbody>
     </table>

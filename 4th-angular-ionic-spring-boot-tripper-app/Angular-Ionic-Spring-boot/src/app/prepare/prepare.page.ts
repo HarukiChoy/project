@@ -61,10 +61,6 @@ export class PreparePage implements OnInit {
     await this.tripService.changeToDone(prepare);
   }
 
-  // async updatePrepareList() {
-  //   return await this.tripService.updatePrepareList();
-  // }
-
   get prepareList() {
     return this.tripService.prepareList;
   }

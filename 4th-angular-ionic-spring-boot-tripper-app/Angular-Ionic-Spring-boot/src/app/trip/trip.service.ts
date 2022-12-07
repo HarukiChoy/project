@@ -16,15 +16,7 @@ export class TripService {
 
   constructor(private api: ApiService) {}
 
-  async getTripList() {
-    try {
-      this.trips = await this.api.get('/trip/list');
-    } catch (error) {
-      alert(String(error));
-      return;
-    }
-  }
-
+  // airport list GET
   async getAirportList() {
     try {
       this.airports = await this.api.get('/trip/airportList');
@@ -34,6 +26,7 @@ export class TripService {
     }
   }
 
+  // trip profile GET
   async getTripProfile(id: number) {
     try {
       let result = await this.api.get('/trip/profile/' + id);
@@ -44,6 +37,17 @@ export class TripService {
     }
   }
 
+  // trip GET
+  async getTripList() {
+    try {
+      this.trips = await this.api.get('/trip/list');
+    } catch (error) {
+      alert(String(error));
+      return;
+    }
+  }
+
+  // trip POST
   async addTrip(trip: Trip) {
     if (!trip.fromDate) {
       return { error: 'Missing going to date.' };
@@ -83,6 +87,7 @@ export class TripService {
     return result;
   }
 
+  // trip PUT
   async updateTrip(trip: TripWithId) {
     if (!trip.fromDate) {
       return { error: 'Missing going to date.' };
@@ -118,6 +123,7 @@ export class TripService {
     return result;
   }
 
+  // prepare list POST
   async addToPrepareList({ tripId, content }) {
     let result = await this.api.post('/prepare/item', { tripId, content });
     if (result.error) {
@@ -129,6 +135,7 @@ export class TripService {
     return;
   }
 
+  // prepare list GET
   async getList(tripId: number) {
     let result = await this.api.get('/prepare/list/' + tripId);
     this.prepareList = result.filter((record) => record.done == false);
@@ -136,18 +143,11 @@ export class TripService {
     return;
   }
 
+  // prepare list PUT
   async changeToDone(prepare: PrepareList) {
     let result = await this.api.put('/prepare/update', prepare);
+    this.prepareList = result.filter((record) => record.done == false);
+    this.doneList = result.filter((record) => record.done == true);
     console.log('updated result: ', result);
   }
-
-  // async updatePrepareList() {
-  //   let temp_array = [];
-  //   for (let record of this.prepareList) {
-  //     if (record.isDone) {
-  //       temp_array.push(record);
-  //     }
-  //   }
-  //   console.log('temp_array: ', temp_array);
-  // }
 }
