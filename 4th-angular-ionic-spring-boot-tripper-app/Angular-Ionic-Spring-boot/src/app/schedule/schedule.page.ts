@@ -47,12 +47,17 @@ export class SchedulePage implements OnInit {
     );
     console.log(this.date, this.time, this.location);
 
-    await this.tripService.addToSchedule({
+    let result = await this.tripService.addToSchedule({
       tripId: this.id,
       date: this.date,
       time: this.time,
       location: this.location,
     });
+
+    if (result.error) {
+      alert(String(result.error));
+    }
+
     this.date = '';
     this.time = '';
     this.location = '';

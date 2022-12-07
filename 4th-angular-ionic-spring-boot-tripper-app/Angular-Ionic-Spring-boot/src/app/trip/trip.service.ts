@@ -2,6 +2,7 @@ import { TripWithId, PrepareList } from './../model/interface';
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Trip } from '../model/interface';
+import { alertController } from '@ionic/core';
 
 @Injectable({
   providedIn: 'root',
@@ -173,5 +174,15 @@ export class TripService {
   }
 
   // schedule POST
-  async addToSchedule({ tripId, date, time, location }) {}
+  async addToSchedule({ tripId, date, time, location }) {
+    if (!tripId || !date || !time || !location) {
+      return { error: 'Missing value.' };
+    }
+    return this.api.post('/schedule/item', {
+      tripId,
+      date,
+      time,
+      location,
+    });
+  }
 }
