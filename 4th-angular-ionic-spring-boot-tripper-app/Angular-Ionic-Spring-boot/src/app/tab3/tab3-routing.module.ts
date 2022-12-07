@@ -9,12 +9,12 @@ const routes: Routes = [
     path: '',
     component: Tab3Page,
     canActivate: [AuthGuard],
-    providers: [AuthService, AuthGuard],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
+  providers: [AuthService, AuthGuard],
 })
 export class Tab3PageRoutingModule {}

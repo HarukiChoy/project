@@ -55,14 +55,30 @@ export class TripService {
     if (!trip.departureIATA) {
       return { error: 'Missing departure airport data.' };
     }
+    if (trip.departureIATA.length !== 3) {
+      return {
+        error: 'Wrong format Airport code, should be 3 characters IATA code.',
+      };
+    }
     if (!trip.toDate) {
       return { error: 'Missing coming back date.' };
     }
     if (!trip.arrivalIATA) {
       return { error: 'Missing arrival airport data.' };
     }
+    if (trip.arrivalIATA.length !== 3) {
+      return {
+        error: 'Wrong format Airport code, should be 3 characters IATA code.',
+      };
+    }
     if (!trip.departureFlight) {
       return { error: 'Missing going to flight name.' };
+    }
+    if (trip.departureFlight.length > 10) {
+      return {
+        error:
+          'Wrong format Air Flight Name, should be smaller than 10 characters.',
+      };
     }
     if (!trip.fromDepartureTime) {
       return { error: 'Missing going to departure time.' };
@@ -73,6 +89,12 @@ export class TripService {
     if (!trip.arrivalFlight) {
       return { error: 'Missing coming back flight name.' };
     }
+    if (trip.arrivalFlight.length > 10) {
+      return {
+        error:
+          'Wrong format Air Flight Name, should be smaller than 10 characters.',
+      };
+    }
     if (!trip.toDepartureTime) {
       return { error: 'Missing coming back departure time.' };
     }
@@ -82,7 +104,6 @@ export class TripService {
     let result = await this.api.post('/trip/new', trip);
     let id: number = result.id;
     this.trips.push({ id: id, ...trip });
-    console.log(this.trips);
 
     return result;
   }
@@ -150,4 +171,7 @@ export class TripService {
     this.doneList = result.filter((record) => record.done == true);
     console.log('updated result: ', result);
   }
+
+  // schedule POST
+  async addToSchedule({ tripId, date, time, location }) {}
 }

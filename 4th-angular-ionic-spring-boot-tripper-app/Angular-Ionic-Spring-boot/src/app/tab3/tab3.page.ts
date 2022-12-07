@@ -14,6 +14,11 @@ export class Tab3Page implements OnInit {
   async ngOnInit() {
     let json = await this.tab3Service.getRate();
     this.result = json.content.reverse();
+
+    setInterval(async () => {
+      let json = await this.tab3Service.getRate();
+      this.result = json.content.reverse();
+    }, 5 * 60 * 1000);
   }
 
   async showChart(eng: string) {

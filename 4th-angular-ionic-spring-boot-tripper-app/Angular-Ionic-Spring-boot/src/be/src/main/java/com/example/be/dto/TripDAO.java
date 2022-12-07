@@ -19,15 +19,25 @@ public class TripDAO {
 
   @Column(name = "user_id")
   private Integer userId;
+  @Column(name="from_date", nullable = false, columnDefinition = "char(10)")
   private String fromDate;
+  @Column(name="departure_iata", nullable = false, columnDefinition = "char(3)")
   private String departureIATA;
+  @Column(name="to_date", nullable = false, columnDefinition = "char(10)")
   private String toDate;
+  @Column(name="arrival_iata", nullable = false, columnDefinition = "char(3)")
   private String arrivalIATA;
+  @Column(name="departure_flight", nullable = false, columnDefinition = "varchar(10)")
   private String departureFlight;
+  @Column(name="from_departure_time", nullable = false, columnDefinition = "char(5)")
   private String fromDepartureTime;
+  @Column(name="from_arrival_time", nullable = false, columnDefinition = "char(5)")
   private String fromArrivalTime;
+  @Column(name="arrival_flight", nullable = false, columnDefinition = "varchar(10)")
   private String arrivalFlight;
+  @Column(name="to_departure_time", nullable = false, columnDefinition = "char(5)")
   private String toDepartureTime;
+  @Column(name="to_arrival_time", nullable = false, columnDefinition = "char(5)")
   private String toArrivalTime;
 
   public TripDAO() {}

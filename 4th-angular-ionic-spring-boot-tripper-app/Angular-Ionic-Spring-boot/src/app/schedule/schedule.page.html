@@ -1,9 +1,147 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>schedule</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="header">
+    <ion-buttons>
+      <ion-back-button defaultHref="/"> </ion-back-button>
+    </ion-buttons>
+    <ion-title> Schedule </ion-title>
+    <div class="addBtn">
+      <ion-buttons id="add" slot="end">
+        <ion-button>
+          <ion-icon name="add-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+    <!-- Pop up page -->
+    <ion-modal trigger="add">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="cancel()">Cancel</ion-button>
+            </ion-buttons>
+            <ion-title>Add a new schedule</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="confirm()" [strong]="true"
+                >Confirm</ion-button
+              >
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
 
+        <ion-content class="ion-padding">
+          <ion-item
+            color="none"
+            lines="none"
+            style="border: solid 0.1rem red; border-radius: 0.5rem"
+          >
+            <ion-label
+              position="stacked"
+              style="border-bottom: solid 0.05rem green"
+              >Date</ion-label
+            >
+            <ion-input
+              type="date"
+              placeholder="Date"
+              [(ngModel)]="date"
+            ></ion-input>
+          </ion-item>
+
+          <br />
+          <ion-item
+            color="none"
+            lines="none"
+            style="border: solid 0.1rem red; border-radius: 0.5rem"
+          >
+            <ion-label
+              position="stacked"
+              style="border-bottom: solid 0.05rem green"
+              >Starting Time</ion-label
+            >
+            <ion-input
+              type="time"
+              placeholder="Starting Time"
+              [(ngModel)]="time"
+            ></ion-input>
+          </ion-item>
+          <br />
+          <ion-item
+            color="none"
+            lines="none"
+            style="border: solid 0.1rem red; border-radius: 0.5rem"
+          >
+            <ion-label
+              position="stacked"
+              style="border-bottom: solid 0.05rem green"
+              >Location</ion-label
+            >
+            <ion-input
+              type="text"
+              placeholder="Location"
+              [(ngModel)]="location"
+            ></ion-input>
+          </ion-item>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+    <!-- Pop up page finished -->
+    <div class="editBtn">
+      <ion-buttons slot="end">
+        <ion-button (click)="editPrepareList()">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </div>
+  <div class="line"></div>
+
+  <form class="prepare-list-from">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2" class="title-1">Need to prepare</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-data" *ngFor="let prepare of prepareList">
+          <td class="content-input">
+            <ion-input
+              [disabled]="isDisabled"
+              name="content"
+              type="text"
+              [value]="prepare.content"
+            ></ion-input>
+          </td>
+
+          <td class="checkBtn">
+            <ion-button
+              *ngIf="!isDisabled"
+              slot="end"
+              size="small"
+              (click)="changeToDone(prepare)"
+            >
+              Done
+            </ion-button>
+          </td>
+        </tr>
+      </tbody>
+
+      <thead>
+        <tr>
+          <th colspan="2" class="title-1">Done</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-data" *ngFor="let done of doneList">
+          <td colspan="2" class="content-input">
+            <ion-input
+              disabled="true"
+              name="content"
+              type="text"
+              [value]="done.content"
+            ></ion-input>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
 </ion-content>

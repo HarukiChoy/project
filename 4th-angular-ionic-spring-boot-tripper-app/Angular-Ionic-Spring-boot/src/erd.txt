@@ -18,7 +18,7 @@
 users
 -----
 id serial PK
-email varchar(50)unique
+email varchar(50) unique
 username varchar(50)
 password char(60)
 mobile varchar(50)
@@ -49,10 +49,11 @@ name varchar(20)
 IATA_code char(3)
 
 
-to_prepare_list
----------------
+prepare
+-------
 id serial PK
 trip_id integer FK >- trip.id
+user_id integer FK >- users.id
 content varchar(255)
 is_done boolean
 
@@ -61,6 +62,7 @@ schedule
 --------
 id serial PK
 trip_id integer FK >- trip.id
+user_id integer FK >- users.id
 schedule_date Date
 schedule_starting_time timestamp
 schedule_location varchar(255)
@@ -87,3 +89,14 @@ eng varchar(5)
 buy varchar(10)
 sell varchar(10)
 scrapped_at timestamp
+
+
+# zoom: 0.900
+# view: (-503, 27)
+# users (602, 373)
+# trip (941, 179)
+# airport (1401, 265)
+# prepare (618, 189)
+# schedule (565, -3)
+# post (999, 535)
+# rate (521, 580)

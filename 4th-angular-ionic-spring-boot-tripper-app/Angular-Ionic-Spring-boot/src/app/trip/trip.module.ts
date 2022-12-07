@@ -9,12 +9,7 @@ import { TripPageRoutingModule } from './trip-routing.module';
 import { TripPage } from './trip.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    TripPageRoutingModule
-  ],
-  declarations: [TripPage]
+  imports: [CommonModule, FormsModule, IonicModule, TripPageRoutingModule],
+  declarations: [TripPage],
 })
 export class TripPageModule {}

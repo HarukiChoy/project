@@ -39,7 +39,6 @@ public class PrepareListController {
     Integer userId = map.get("userId");
     return prepareListService.addItem(newContent, userId);
   }
-
   @CrossOrigin(origins = "*")
   @PutMapping("/update")
   public List<PrepareListDAO> updatePrepareProfile(HttpServletRequest req,

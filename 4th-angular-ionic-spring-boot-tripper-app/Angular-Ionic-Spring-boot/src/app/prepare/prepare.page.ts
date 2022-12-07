@@ -1,6 +1,6 @@
 import { PrepareList } from './../model/interface';
 import { TripService } from './../trip/trip.service';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IonModal } from '@ionic/angular';
 import { Subscription } from 'rxjs';
@@ -57,7 +57,6 @@ export class PreparePage implements OnInit {
   }
 
   async changeToDone(prepare: PrepareList) {
-    console.log('prepare: ', prepare);
     await this.tripService.changeToDone(prepare);
   }
 

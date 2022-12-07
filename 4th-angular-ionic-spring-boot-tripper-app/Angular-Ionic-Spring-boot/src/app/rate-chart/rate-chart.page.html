@@ -1,8 +1,20 @@
-<ng-container>
-  <canvas
-    id="myChart"
-    style="width: 100%; max-width: 100%; background-color: lightcyan"
-  >
-    {{ chart }}
-  </canvas>
-</ng-container>
+<ion-header>
+  <ion-toolbar>
+    <div class="header">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"> </ion-back-button>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container>
+    <canvas
+      id="myChart"
+      style="width: 100%; max-width: 100%; background-color: lightcyan"
+    >
+      {{ chart }}
+    </canvas>
+  </ng-container>
+</ion-content>
