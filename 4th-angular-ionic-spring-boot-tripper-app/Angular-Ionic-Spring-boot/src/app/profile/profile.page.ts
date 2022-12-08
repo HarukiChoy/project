@@ -19,4 +19,8 @@ export class ProfilePage implements OnInit {
     this.username = result.username;
     this.mobile = result.mobile;
   }
+
+  logout() {
+    this.userService.logout();
+  }
 }

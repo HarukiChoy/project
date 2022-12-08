@@ -25,6 +25,12 @@ export class UserService {
     this.navigatePageTo('');
   }
 
+  logout() {
+    localStorage.removeItem('jwtToken');
+    this.api.token = '';
+    this.navigatePageTo('/login');
+  }
+
   async register(
     username: string,
     password: string,
