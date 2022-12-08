@@ -16,14 +16,13 @@ public class ScheduleDAO {
     generator = "schedule_seq"
   )
   private Long id;
-
   @Column(name="trip_id", nullable = false)
   private Integer tripId;
   @Column(name="user_id", nullable = false)
   private Integer userId;
   @Column(name="date", nullable = false, columnDefinition = "char(10)")
   private String date;
-  @Column(name="starting_time", nullable = false, columnDefinition = "char(3)")
+  @Column(name="starting_time", nullable = false, columnDefinition = "char(5)")
   private String startingTime;
   @Column(name="location", nullable = false, columnDefinition = "varchar(100)")
   private String location;

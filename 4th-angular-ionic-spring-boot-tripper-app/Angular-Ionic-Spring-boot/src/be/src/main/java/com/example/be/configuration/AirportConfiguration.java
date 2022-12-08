@@ -17,7 +17,8 @@ import java.util.List;
 @Configuration
 public class AirportConfiguration {
   public static List<AirportDAO> readCsvFile () {
-    String path = "/Users/harukichoy/Desktop/result.csv";
+    String pwd = new File("").getAbsolutePath();
+    String path = pwd + "/src/main/java/com/example/be/configuration/result.csv";
     String line = "";
     List<AirportDAO> airports = new ArrayList<>();
     BufferedReader br;
