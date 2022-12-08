@@ -2,7 +2,6 @@ import { TripWithId, PrepareList } from './../model/interface';
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Trip } from '../model/interface';
-import { alertController } from '@ionic/core';
 
 @Injectable({
   providedIn: 'root',

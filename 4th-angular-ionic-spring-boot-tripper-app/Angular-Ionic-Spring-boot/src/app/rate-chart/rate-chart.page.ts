@@ -40,6 +40,10 @@ export class RateChartPage implements OnInit {
     });
   }
 
+  get eng() {
+    return this.tab3Service.eng;
+  }
+
   // createChart() {
   //   this.chart = new Chart('myChart', {
   //     type: 'line',

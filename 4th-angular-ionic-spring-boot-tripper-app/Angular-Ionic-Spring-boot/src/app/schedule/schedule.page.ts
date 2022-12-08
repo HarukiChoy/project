@@ -27,7 +27,6 @@ export class SchedulePage implements OnInit {
     this.sub = this.activatedRoute.params.subscribe((params) => {
       this.id = +params['id'];
     });
-    await this.tripService.getList(this.id);
   }
   ngOnDestroy(): void {
     this.sub?.unsubscribe();

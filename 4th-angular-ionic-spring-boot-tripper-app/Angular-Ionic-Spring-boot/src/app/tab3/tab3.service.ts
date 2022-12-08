@@ -6,6 +6,7 @@ import { ApiService } from '../api.service';
   providedIn: 'root',
 })
 export class Tab3Service {
+  eng: string;
   buyResult: string[] = [];
   sellResult: string[] = [];
   date: string[] = [];
@@ -21,6 +22,7 @@ export class Tab3Service {
   }
 
   async getRateData(eng: string) {
+    this.eng = eng;
     let result = await this.api.get('/rate/data/' + eng);
     this.buyResult = result.map((record) => record.buy);
     this.sellResult = result.map((record) => record.sell);
