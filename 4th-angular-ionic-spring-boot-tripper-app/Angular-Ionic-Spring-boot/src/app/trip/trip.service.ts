@@ -1,4 +1,4 @@
-import { TripWithId, PrepareList } from './../model/interface';
+import { TripWithId, PrepareList, Airport } from './../model/interface';
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Trip } from '../model/interface';
@@ -8,7 +8,7 @@ import { Trip } from '../model/interface';
 })
 export class TripService {
   trips: Array<TripWithId> = [];
-  airports: object[] = [];
+  airports: Airport[] = [];
   prepareList: Array<PrepareList> = [
     // { id: 1, content: 'Buy Umbrella', isDone: false },
   ];
@@ -20,6 +20,7 @@ export class TripService {
   async getAirportList() {
     try {
       this.airports = await this.api.get('/trip/airportList');
+      // console.log(this.airports);
     } catch (error) {
       alert(String(error));
       return;

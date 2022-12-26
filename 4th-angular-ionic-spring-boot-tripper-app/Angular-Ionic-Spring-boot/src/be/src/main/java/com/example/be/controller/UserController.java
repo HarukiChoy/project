@@ -12,6 +12,7 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping(path = "users")
+@CrossOrigin(origins = "*")
 public class UserController {
 
   public final UserService userService;
@@ -22,19 +23,17 @@ public class UserController {
   }
 
   // Register POST api
-  @CrossOrigin(origins = "*")
+
   @PostMapping("/register")
   public HashMap<String, String> addUser(@RequestBody RegisterDTO user) throws Exception {
     return userService.addUser(user);
   }
 
-  @CrossOrigin(origins = "*")
   @PostMapping("/login")
   public HashMap<String, String> login(@RequestBody LoginDTO user) throws Exception {
     return userService.login(user);
   }
 
-  @CrossOrigin(origins = "*")
   @GetMapping("/profile")
   public UserDAO profile(HttpServletRequest req) throws Exception {
     HashMap<String, Integer> map = Auth.checkJwtValid(req);

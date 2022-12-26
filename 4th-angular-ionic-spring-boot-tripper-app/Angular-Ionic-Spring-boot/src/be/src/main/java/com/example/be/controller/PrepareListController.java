@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "prepare")
+@CrossOrigin(origins = "*")
 public class PrepareListController {
   private final PrepareListService prepareListService;
 
@@ -21,7 +22,6 @@ public class PrepareListController {
     this.prepareListService = prepareListService;
   }
 
-  @CrossOrigin(origins = "*")
   @GetMapping("/list/{tripId}")
   public List<PrepareListDAO> getList(
     HttpServletRequest req, @PathVariable(name = "tripId") Integer tripId) throws Exception {
@@ -30,7 +30,6 @@ public class PrepareListController {
     return prepareListService.getList(userId, tripId);
   }
 
-  @CrossOrigin(origins = "*")
   @PostMapping("/item")
   public List<PrepareListDAO> addItem(HttpServletRequest req,
                                       @RequestBody PrepareListDTO newContent
@@ -39,7 +38,7 @@ public class PrepareListController {
     Integer userId = map.get("userId");
     return prepareListService.addItem(newContent, userId);
   }
-  @CrossOrigin(origins = "*")
+
   @PutMapping("/update")
   public List<PrepareListDAO> updatePrepareProfile(HttpServletRequest req,
                                                    @RequestBody PrepareListDAO prepare

@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
 import { TripService } from '../trip/trip.service';
 
 @Component({
@@ -11,6 +10,7 @@ import { TripService } from '../trip/trip.service';
 })
 export class TripProfilePage implements OnInit, OnDestroy {
   isDisabled = true;
+
   // trip$ = this.activatedRoute.params.pipe(
   //   mergeMap((params) => this.tripService.getTripDetail(params.id))
   // );
@@ -41,6 +41,7 @@ export class TripProfilePage implements OnInit, OnDestroy {
     this.sub = this.activatedRoute.params.subscribe((params) => {
       this.id = +params['id'];
     });
+    this.tripService.getAirportList();
 
     let result = await this.tripService.getTripProfile(this.id);
     this.fromDate = result.fromDate;
@@ -94,5 +95,9 @@ export class TripProfilePage implements OnInit, OnDestroy {
 
   schedule() {
     this.router.navigate(['/schedule', this.id]);
+  }
+
+  get airports() {
+    return this.tripService.airports;
   }
 }

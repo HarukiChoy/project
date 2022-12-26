@@ -11,6 +11,7 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping(path="auth")
+@CrossOrigin(origins="*")
 public class Auth {
 
   public final JwtService jwtService;
@@ -20,7 +21,6 @@ public class Auth {
     this.jwtService = jwtService;
   }
 
-  @CrossOrigin(origins="*")
   @GetMapping("/check")
   public static HashMap<String, Integer> checkJwtValid(HttpServletRequest req) throws Exception{
     String authorHeader = req.getHeader("Authorization");

@@ -30,3 +30,9 @@ export interface PrepareList {
   content: string;
   isDone: boolean;
 }
+
+export interface Airport {
+  id: number;
+  name: string;
+  iata_code: string;
+}

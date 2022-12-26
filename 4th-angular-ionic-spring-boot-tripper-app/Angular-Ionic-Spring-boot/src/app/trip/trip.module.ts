@@ -1,3 +1,4 @@
+import { MaterialModule } from './../material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +10,13 @@ import { TripPageRoutingModule } from './trip-routing.module';
 import { TripPage } from './trip.page';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, TripPageRoutingModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    TripPageRoutingModule,
+    MaterialModule,
+  ],
   declarations: [TripPage],
 })
 export class TripPageModule {}

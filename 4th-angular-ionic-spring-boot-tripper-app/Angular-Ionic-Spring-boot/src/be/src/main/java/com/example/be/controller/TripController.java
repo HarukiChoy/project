@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "trip")
+@CrossOrigin(origins = "*")
 public class TripController {
   public final TripService tripService;
 
@@ -21,7 +22,6 @@ public class TripController {
     this.tripService = tripService;
   }
 
-  @CrossOrigin(origins = "*")
   @PostMapping("/new")
   public HashMap<String, Long> addTrip(@RequestBody AddNewTripDTO trip, HttpServletRequest req) throws Exception {
     HashMap<String, Integer> map = Auth.checkJwtValid(req);
@@ -29,7 +29,6 @@ public class TripController {
     return tripService.addTrip(trip, userId);
   }
 
-  @CrossOrigin(origins = "*")
   @GetMapping("/list")
   public List<TripDAO> getTripList (HttpServletRequest req) throws Exception {
     HashMap<String, Integer> map = Auth.checkJwtValid(req);
@@ -37,13 +36,11 @@ public class TripController {
     return tripService.getTripList(userId);
   }
 
-  @CrossOrigin(origins = "*")
   @GetMapping("/airportList")
   public List<AirportDAO> getAirportList () {
     return tripService.getAirportList();
   }
 
-  @CrossOrigin(origins = "*")
   @GetMapping("/profile/{id}")
   public TripDAO getTripProfileById(
     @PathVariable(name="id") String id,
@@ -54,13 +51,11 @@ public class TripController {
     return tripService.getTripProfileById(id, userId);
   }
 
-  @CrossOrigin(origins = "*")
   @PutMapping("/update")
   public TripDAO updateTripProfile(@RequestBody TripDAO nTrip, HttpServletRequest req) throws Exception {
     HashMap<String, Integer> map = Auth.checkJwtValid(req);
     Integer userId = map.get("userId");
     return tripService.updateTripProfile(nTrip, userId);
   }
-
 
 }

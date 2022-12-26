@@ -11,6 +11,7 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping(path="schedule")
+@CrossOrigin(origins="*")
 public class ScheduleController {
 
   private final ScheduleService scheduleService;
@@ -20,7 +21,6 @@ public class ScheduleController {
     this.scheduleService = scheduleService;
   }
 
-  @CrossOrigin(origins="*")
   @PostMapping("/item")
   public ScheduleDAO addSchedule(
     @RequestBody ScheduleDTO schedule,

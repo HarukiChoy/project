@@ -37,11 +37,25 @@
             <div class="input-icon">
               <ion-icon name="airplane-outline"></ion-icon>
             </div>
-            <ion-input
+            <!-- <ion-input
               name="from-airport"
               type="text"
               [(ngModel)]="departureIATA"
-            ></ion-input>
+            ></ion-input> -->
+            <input
+              type="text"
+              name="from-airport"
+              [(ngModel)]="departureIATA"
+              class="form-control auto-input"
+              list="datalistOptions"
+              id="from-airport"
+            />
+            <datalist id="datalistOptions">
+              <option
+                *ngFor="let airport of airports"
+                [value]="airport.iata_code"
+              ></option>
+            </datalist>
           </div>
         </div>
       </div>
@@ -79,11 +93,26 @@
             <div class="input-icon">
               <ion-icon name="airplane-outline"></ion-icon>
             </div>
-            <ion-input
+            <!-- <ion-input
               name="to-airport"
               type="text"
               [(ngModel)]="arrivalIATA"
-            ></ion-input>
+            ></ion-input> -->
+
+            <input
+              type="text"
+              name="to-airport"
+              [(ngModel)]="arrivalIATA"
+              class="form-control auto-input"
+              list="datalistOptions"
+              id="to-airport"
+            />
+            <datalist id="datalistOptions">
+              <option
+                *ngFor="let airport of airports"
+                [value]="airport.iata_code"
+              ></option>
+            </datalist>
           </div>
         </div>
       </div>

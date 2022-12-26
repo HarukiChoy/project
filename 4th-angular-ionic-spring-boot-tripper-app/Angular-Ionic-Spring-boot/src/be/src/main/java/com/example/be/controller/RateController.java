@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "rate")
+@CrossOrigin(origins = "*")
 public class RateController {
   public final RateService rateService;
 
@@ -19,19 +20,16 @@ public class RateController {
     this.rateService = rateService;
   }
 
-  @CrossOrigin(origins = "*")
   @PostMapping("/list")
   public void addRate(@RequestBody AddRateDTO rate){
     rateService.addRate(rate);
   }
 
-  @CrossOrigin(origins = "*")
   @GetMapping("/list")
   public Page<RateDAO> getRateList() {
     return rateService.getRateList();
   }
 
-  @CrossOrigin(origins = "*")
   @GetMapping("/data/{eng}")
   public List<RateDAO> getRateData(
     @PathVariable(name="eng") String eng
