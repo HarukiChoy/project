@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Airport } from '../model/interface';
 import { TripService } from './trip.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { TripService } from './trip.service';
   styleUrls: ['./trip.page.scss'],
 })
 export class TripPage implements OnInit {
+  airportList: Airport[] = [];
   // fromDate: string = '';
   // departureIATA: string = '';
   // toDate: string = '';
@@ -63,4 +65,19 @@ export class TripPage implements OnInit {
   get airports() {
     return this.tripService.airports;
   }
+
+
+  // search() {
+  //   if (this.departureIATA === '') {
+  //     this.airportList = this.tripService.airports;
+  //   } else {
+  //     this.airportList = this.tripService.airports;
+  //     this.airportList = this.airportList.filter((res) => {
+  //       return res.iata_code
+  //         .toLocaleLowerCase()
+  //         .match(this.departureIATA.toLocaleLowerCase());
+  //     });
+  //     console.log(this.airportList);
+  //   }
+  // }
 }

@@ -41,6 +41,7 @@
               name="from-airport"
               type="text"
               [(ngModel)]="departureIATA"
+              (ngModelChange)="search()"
             ></ion-input> -->
             <input
               type="text"
@@ -56,10 +57,14 @@
                 [value]="airport.iata_code"
               ></option>
             </datalist>
+
           </div>
         </div>
       </div>
     </div>
+    <!-- <div *ngFor="let air of airportList">
+      {{ air }}
+    </div> -->
 
     <!-- Travel to -->
     <div class="row">
@@ -97,6 +102,7 @@
               name="to-airport"
               type="text"
               [(ngModel)]="arrivalIATA"
+              (ngModelChange)="search()"
             ></ion-input> -->
 
             <input
